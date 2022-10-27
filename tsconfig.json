@@ -20,6 +20,6 @@
     },
     "files": [
         "index.d.ts",
-        "accela-dev-environment-tests.ts"
+        "accela-types-tests.ts"
     ]
 }
