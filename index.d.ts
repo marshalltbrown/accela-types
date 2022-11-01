@@ -1,8 +1,19 @@
 // Type definitions for accela-dev-environment
 // Project: https://github.com/marshalltbrown/accela-types
 // Definitions by: Marshall Brown <https://github.com/marshalltbrown>
-
 declare namespace aa {
+	/**
+	 * Returns the Service Provider Code a.k.a. the agency name.
+	 */
+	function getServiceProviderCode(): string
+
+	namespace env {
+		var paramValues: Hashtable
+		function setValue(key: string, value: any): void
+		function getValue(key: string): any
+		function setParamValues(values: Hashtable): void
+		function getParamValues(): Hashtable
+	}
 
 	namespace acaPageFlow {
 		/**
@@ -2940,7 +2951,7 @@ declare namespace aa {
 		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getStatusHistoryByCap(capID:CapIDModel, type:string, format:QueryFormat): ScriptResult<any>
+		function getStatusHistoryByCap(capID:CapIDModel, type:string, format:QueryFormat): ScriptResult<StatusHistoryScriptModel[]>
 
 		/**
 		 * Link an application to a parent application.
@@ -5124,6 +5135,35 @@ declare namespace aa {
 		 */
 		function getScriptF4FeeItemModel(): ScriptResult<any>
 
+	}
+	namespace db {
+		/**
+		 * 
+		 * @param waitTime - long
+		 */
+		function wait(waitTime: number): void
+		/**
+		 * 
+		 * @param sqlString - The SQL command to run on the database.
+		 * @param arrayVar - Unknown use case. Accepts [] as a value.
+		 */
+		function select(sqlString: string, arrayVar: any[]): ScriptResult<HashMap[]>
+		function batchUpdate(var1: string, var2: any[]): ScriptResult<any>
+		function notifyAll(): void
+		function update(var1: any, var2: any[]): ScriptResult<any>
+		function batchUpdate4CrossAgency(var1: string, var2: any[], var3: HashMap): ScriptResult<any>
+		function prepareStatement(var1: java.sql.Connection, var2: string): ScriptResult<any>
+		function update4CrossAgency(var1: string, var2: any[], var3: HashMap): ScriptResult<any>
+		function notify(): void
+		function getConnection(): java.sql.Connection
+		/**
+		 * @returns int
+		 */
+		function hashCode(): number
+		function equals(var1: any): boolean
+		function toString(): string
+		function select4CrossAgency(var1: String, var2: any[], var3: HashMap): ScriptResult<any>
+		function initScript(var1: string, var2: string): void
 	}
 	namespace finance {
 		/**
@@ -7525,7 +7565,7 @@ declare namespace aa {
 		function getInspection(capID:CapIDModel, inspectionID:number): ScriptResult<any>
 
 		/**
-		 * Retrieves an array of InspectionBusines objects wrapped in
+		 * Retrieves an array of InspectionBusiness objects wrapped in
  InspectionScriptModel objects.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @returns (ScriptResult<any>) - ScriptResult
@@ -34413,6 +34453,7 @@ setAuditStatus(auditStatus:string): void
 
 }
 declare class StatusHistoryScriptModel {
+statusDate: ScriptDateTime
 /**
  * Get serviceProviderCode.
  * @returns (String) - String
@@ -37744,6 +37785,13 @@ toString(): String
 
 }
 declare class ScriptDateTime {
+year: number
+second: number
+epochMilliseconds: number
+minute: number
+month: number
+dayOfMonth: number
+hourOfDay: number
 }
 declare class ActivityModel {
 }
