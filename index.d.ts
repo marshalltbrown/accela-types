@@ -7,6 +7,12 @@ declare namespace aa {
 	 */
 	function getServiceProviderCode(): string
 
+	/**
+	 * Displays a text string in the log. Commonly used in script testing.
+	 * @param message The message to be displayed in the log.
+	 */
+	function print(message: string): any
+
 	namespace date {
 		function getCurrentDate(): any
 	}
