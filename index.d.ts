@@ -7,6 +7,10 @@ declare namespace aa {
 	 */
 	function getServiceProviderCode(): string
 
+	namespace date {
+		function getCurrentDate(): any
+	}
+
 	namespace env {
 		var paramValues: Hashtable
 		function setValue(key: string, value: any): void
