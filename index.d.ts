@@ -4887,9 +4887,9 @@ declare namespace aa {
 		/**
 		 * Get Expiration Info by CAP ID
 		 * @param {CapIDModel} capID (CapIDModel)
-		 * @returns (ScriptResult<any>) - ScriptResult B1ExpirationScriptModel
+		 * @returns (ScriptResult<B1ExpirationModel>) - ScriptResult B1ExpirationScriptModel
 		 */
-		function getLicensesByCapID(capID:CapIDModel): ScriptResult<any>
+		function getLicensesByCapID(capID:CapIDModel): ScriptResult<B1ExpirationModel>
 
 		/**
 		 * 
