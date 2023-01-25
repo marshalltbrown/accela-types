@@ -1,18 +1,15 @@
 {
   "name": "accela-types",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Type declarations for the Accela API and scripting environment.",
-  "main": "index.d.ts",
-  "scripts": {
-    "test": "undefined"
-  },
   "repository": {
     "type": "git",
-    "url": "undefined"
+    "url": "https://github.com/marshalltbrown/accela-types"
   },
   "keywords": [
-    "accela"
+    "accela",
+    "types"
   ],
   "author": "marshalltbrown",
-  "license": "CC-BY"
+  "license": "MIT"
 }
