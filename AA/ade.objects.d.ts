@@ -25170,3 +25170,7 @@ declare class XRefContactEntityModel {
 }
 declare class ProcessRelationModel {
 }
+declare class BizDomainScriptModel {
+}
+declare class UserGroupModel{
+}
