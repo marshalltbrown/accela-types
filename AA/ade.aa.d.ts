@@ -2446,7 +2446,7 @@ declare namespace aa {
 		 * @param {string} id3 (string) - permit id3
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapID(id1:string, id2:string, id3:string): ScriptResult<any>
+		function getCapID(id1:string, id2:string, id3:string): ScriptResult<CapIDModel | null>
 
 		/**
 		 * get CapID of trade name by the trade license info.
