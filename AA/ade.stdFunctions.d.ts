@@ -415,7 +415,7 @@ declare function allTasksComplete(taskToHide: any): Boolean
 * @param {any} pStatus - condition status
 * @param {any} pDesc - condition description
 * @param {any} pImpact - condition impact
-* @returns {boolean} - true if a matching condition is found, false if no matching condition is found
+* @returns {boolean} true if a matching condition is found, false if no matching condition is found
 */
 declare function appHasCondition(pType: string | null, pStatus: any, pDesc: any, pImpact: any): boolean
 
