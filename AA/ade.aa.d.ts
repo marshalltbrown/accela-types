@@ -13,7 +13,20 @@ declare namespace aa {
 	function print(message: string): any
 
 	namespace date {
-		function getCurrentDate(): any
+
+		function getAgencyTimezoneDate(): ScriptDateTime
+		function getCurrentDate(): ScriptDateTime
+		function parseDate(strDate: string): ScriptDateTime
+		function parseISODate(str: string): ScriptDateTime
+		/**
+		 * Adds a number of days to a date.
+		 * @param existingDate A string representing a date in the format MM/DD/YYYY
+		 * @param numberToAdd The number of days to add to the existing date
+		 * @returns A string representing the new date in the format MM/DD/YYYY
+		 */
+		function addDate(existingDate: string, numberToAdd: number): string
+		function transToJavaUtilDate(milliseconds: number): Date
+		function diffDate(firstDate: string, secondDate: string): number
 	}
 
 	namespace env {
