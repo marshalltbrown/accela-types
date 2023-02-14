@@ -1,4 +1,4 @@
-/// <reference path="../aa/ade.aa.d.ts" />
+/// <reference path="../AA/at.aa.d.ts" />
 // ASI Table Arrays are also accessible via their name in all caps, no spaces.
 
 declare var timeElapsedMin: undefined
@@ -29,8 +29,8 @@ declare var wfDate: String
 declare var wfStatus: String
 declare var wfTask: String
 declare var prefix: string
-declare var bvr3: ScriptResult<BizDomainScriptModel|undefined>
-declare var bvr1: ScriptResult<BizDomainScriptModel|undefined>
+declare var bvr3: ScriptResult<BizDomainScriptModel>
+declare var bvr1: ScriptResult<BizDomainScriptModel>
 declare var doScripts: boolean
 declare var doStdChoices: boolean
 declare var controlFlagStdChoice: string
@@ -50,7 +50,7 @@ declare var currentUserGroupObj: UserGroupModel
 declare var parentCapId: boolean
 declare var feeFactor: String
 declare var partialCap: boolean
-declare var AInfo: undefined
+declare var AInfo: [{ [key: string]: any }]
 declare var capDetail: CapDetailScriptModel
 declare var balanceDue: number
 declare var feesInvoicedTotal: number

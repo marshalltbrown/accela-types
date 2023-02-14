@@ -1,5 +1,6 @@
-/// <reference path="ade.objects.d.ts" />
-/// <reference path="ade.java.d.ts" />
+/// <reference path="at.objects.d.ts" />
+/// <reference path="at.java.d.ts" />
+
 declare namespace aa {
 	/**
 	 * Returns the Service Provider Code a.k.a. the agency name.
@@ -2530,7 +2531,7 @@ declare namespace aa {
 		 * @param {string} id3 (string)
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCap(id1:string, id2:string, id3:string): ScriptResult<CapModel>
+		function getCap(id1:string, id2:string, id3:string): ScriptResult<CapScriptModel>
 
 		/**
 		 * Gets the cap basic info.
@@ -2544,7 +2545,7 @@ declare namespace aa {
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCap(capID:CapIDModel): ScriptResult<CapModel>
+		function getCap(capID:CapIDModel): ScriptResult<CapScriptModel>
 
 		/**
 		 * Get cap detail.

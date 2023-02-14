@@ -1,4 +1,4 @@
-/// <reference path="ade.objects.d.ts" />
+/// <reference path="at.objects.d.ts" />
 
 /**
  * This function calls a web service script in a new transaction and logs any debug or message information returned from the script.

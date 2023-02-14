@@ -1,26 +1,18 @@
-/// <reference path="./aa/ade.aa.d.ts" />
-
-declare var z: string
+declare var prefix: string
+declare var bvr3: ScriptResult<BizDomainScriptModel>
 declare var bvr1: ScriptResult<BizDomainScriptModel>
 declare var doScripts: boolean
 declare var doStdChoices: boolean
 declare var controlFlagStdChoice: string
-declare var prefix: undefined
 declare var bzr: boolean
 declare var SAScript: null
 declare var SA: null
 declare var useSA: boolean
+declare var useCustomScriptFile: boolean
 declare var SCRIPT_VERSION: number
 declare var documentOnly: boolean
 declare var preExecute: string
-declare var tmpID: CapIDModel
 declare var controlString: string
-declare var vEventName: String
-declare var useProductScript: boolean
-declare var useProductInclude: boolean
-declare var eventName: string
-declare var myUserId: string
-declare var myCapId: string
 declare var INCLUDE_VERSION: string
 declare var parentCapString: string
 declare var capDetailObjResult: ScriptResult<CapDetailScriptModel>
@@ -28,7 +20,7 @@ declare var currentUserGroupObj: UserGroupModel
 declare var parentCapId: boolean
 declare var feeFactor: String
 declare var partialCap: boolean
-declare var AInfo: undefined
+declare var AInfo: [{ [key: string]: any }]
 declare var capDetail: CapDetailScriptModel
 declare var balanceDue: number
 declare var feesInvoicedTotal: number
@@ -40,7 +32,7 @@ declare var fileDateYYYYMMDD: string
 declare var fileDate: string
 declare var fileDateObj: ScriptDateTime
 declare var capStatus: String
-declare var capName: String
+declare var capName: null
 declare var appTypeString: String
 declare var appTypeAlias: String
 declare var appTypeResult: CapTypeModel
@@ -60,8 +52,9 @@ declare var feeSeqList: undefined
 declare var br: string
 declare var debug: string
 declare var message: string
-declare var startTime: number
+declare var startTime: number | undefined 
 declare var startDate: undefined
+declare var vEventName: String
 declare var vScriptName: String
 declare var cancel: boolean
 declare var GLOBAL_VERSION: number
@@ -70,18 +63,13 @@ declare var enableVariableBranching: boolean
 declare var useTaskSpecificGroupName: boolean
 declare var useAppSpecificGroupName: boolean
 declare var disableTokens: boolean
-declare var showDebug: boolean | number
+declare var showDebug: boolean
 declare var showMessage: boolean
 declare var vLevel: number
 declare var loopk: string
-declare var i: string
+declare var i: string | number
+declare var OCCUPANCYTYPE: undefined
+declare var CONSTRUCTIONTYPE: undefined
 declare var getCapResult: ScriptResult<any>
-declare var vDebugUsers: undefined
-declare var DEBUGUSERS: string
-declare var SLACKURL: string
-declare var ACAURL: string
-declare var SENDEMAILS: boolean
-declare var EMAILREPLIES: string
-declare var ENVIRON: string
-declare var ii: string
+declare var stopBranch: boolean
 declare var loopGlob: string
