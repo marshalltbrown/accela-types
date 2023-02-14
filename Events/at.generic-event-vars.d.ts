@@ -18,7 +18,7 @@ declare var INCLUDE_VERSION: string
 declare var parentCapString: string
 declare var capDetailObjResult: ScriptResult<CapDetailScriptModel>
 declare var currentUserGroupObj: UserGroupModel
-declare var parentCapId: boolean
+declare var parentCapId: boolean | CapIDModel
 declare var feeFactor: String
 declare var partialCap: boolean
 declare var AInfo: [{ [key: string]: any }]
@@ -69,8 +69,6 @@ declare var showMessage: boolean
 declare var vLevel: number
 declare var loopk: string
 declare var i: string | number
-declare var OCCUPANCYTYPE: undefined
-declare var CONSTRUCTIONTYPE: undefined
 declare var getCapResult: ScriptResult<any>
 declare var stopBranch: boolean
 declare var loopGlob: string
