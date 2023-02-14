@@ -20498,30 +20498,29 @@ getScript(cx:Context, agencyCode:string, scriptName:string): Script
 
 }
 declare class ScriptResult<Type> {
-/**
- * Get Success.
- * @returns (boolean) - boolean
- */
-getSuccess(): boolean
+    /**
+     * Get Success.
+     * @returns (boolean) - boolean
+     */
+    getSuccess(): boolean;
 
-/**
- * Get error type.
- * @returns (String) - String
- */
-getErrorType(): String
+    /**
+     * Get error type.
+     * @returns (String) - String
+     */
+    getErrorType(): string;
 
-/**
- * Get error message.
- * @returns (String) - String
- */
-getErrorMessage(): String
+    /**
+     * Get error message.
+     * @returns (String) - String
+     */
+    getErrorMessage(): string;
 
-/**
- * Get Output.
- * @returns (object) - Object
- */
-getOutput(): Type
-
+    /**
+     * Get Output.
+     * @returns (Type|null) - Type or null
+     */
+    getOutput(): Type | null;
 }
 declare class ScriptRoot {
 /**
