@@ -2459,7 +2459,7 @@ declare namespace aa {
 		 * @param {string} id3 (string) - permit id3
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapID(id1:string, id2:string, id3:string): ScriptResult<CapIDModel | null>
+		function getCapID(id1:string, id2:string, id3:string): ScriptResult<CapIDModel>
 
 		/**
 		 * get CapID of trade name by the trade license info.
@@ -2503,7 +2503,7 @@ declare namespace aa {
 		 * @param {string} customID (string) - custom id
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapID(customID:string): ScriptResult<any>
+		function getCapID(customID:string): ScriptResult<CapIDModel>
 
 		/**
 		 * Get capID by id1,id2,id3,customID,trackingID.
@@ -2514,14 +2514,14 @@ declare namespace aa {
 		 * @param {number} trackingID (number) - (long) trackin id
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapID(id1:string, id2:string, id3:string, customID:string, trackingID:number): ScriptResult<any>
+		function getCapID(id1:string, id2:string, id3:string, customID:string, trackingID:number): ScriptResult<CapIDModel>
 
 		/**
 		 * Get capID by trackingID.
 		 * @param {number} trackingID (number) - (long) tracking ID
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapID(trackingID:number): ScriptResult<any>
+		function getCapID(trackingID:number): ScriptResult<CapIDModel>
 
 		/**
 		 * get cap by capID.
@@ -2530,7 +2530,7 @@ declare namespace aa {
 		 * @param {string} id3 (string)
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCap(id1:string, id2:string, id3:string): ScriptResult<any>
+		function getCap(id1:string, id2:string, id3:string): ScriptResult<CapModel>
 
 		/**
 		 * Gets the cap basic info.
@@ -2544,7 +2544,7 @@ declare namespace aa {
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCap(capID:CapIDModel): ScriptResult<any>
+		function getCap(capID:CapIDModel): ScriptResult<CapModel>
 
 		/**
 		 * Get cap detail.
