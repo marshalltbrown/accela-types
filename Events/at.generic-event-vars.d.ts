@@ -1,4 +1,5 @@
-declare var prefix: string
+/// <reference path="../AA/at.objects.d.ts" />
+declare var prefix: string | undefined
 declare var bvr3: ScriptResult<BizDomainScriptModel>
 declare var bvr1: ScriptResult<BizDomainScriptModel>
 declare var doScripts: boolean
@@ -32,7 +33,7 @@ declare var fileDateYYYYMMDD: string
 declare var fileDate: string
 declare var fileDateObj: ScriptDateTime
 declare var capStatus: String
-declare var capName: null
+declare var capName: String | null
 declare var appTypeString: String
 declare var appTypeAlias: String
 declare var appTypeResult: CapTypeModel
@@ -63,7 +64,7 @@ declare var enableVariableBranching: boolean
 declare var useTaskSpecificGroupName: boolean
 declare var useAppSpecificGroupName: boolean
 declare var disableTokens: boolean
-declare var showDebug: boolean
+declare var showDebug: boolean | number
 declare var showMessage: boolean
 declare var vLevel: number
 declare var loopk: string
