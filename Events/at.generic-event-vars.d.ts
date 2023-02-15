@@ -1,36 +1,7 @@
-/// <reference path="../aa/ade.aa.d.ts" />
-// ASI Table Arrays are also accessible via their name in all caps, no spaces.
-
-declare var timeElapsedMin: undefined
-declare var timeElapsedHours: undefined
-declare var endTime: undefined
-declare var startTime: number
-declare var dateLogged: undefined
-declare var timeLogSeq: undefined
-declare var timeLogModel: undefined
-declare var i: number
-declare var wfTimeOT: String
-declare var wfTimeBillable: String
-declare var timeAccountingArray: undefined
-declare var wfStaffUserID: String
-declare var wfProcess: String
-declare var wfActionByDept: String
-declare var wfActionByUserID: String
-declare var wfActionByObj: SysUserModel
-declare var wfActionBy: SysUserModel
-declare var wfHours: String
-declare var wfDue: ScriptDateTime
-declare var wfNote: null
-declare var wfComment: String
-declare var wfStep: number
-declare var wfProcessID: number
-declare var wfDateMMDDYYYY: string
-declare var wfDate: String
-declare var wfStatus: String
-declare var wfTask: String
-declare var prefix: string
-declare var bvr3: ScriptResult<BizDomainScriptModel|undefined>
-declare var bvr1: ScriptResult<BizDomainScriptModel|undefined>
+/// <reference path="../AA/at.objects.d.ts" />
+declare var prefix: string | undefined
+declare var bvr3: ScriptResult<BizDomainScriptModel>
+declare var bvr1: ScriptResult<BizDomainScriptModel>
 declare var doScripts: boolean
 declare var doStdChoices: boolean
 declare var controlFlagStdChoice: string
@@ -45,12 +16,12 @@ declare var preExecute: string
 declare var controlString: string
 declare var INCLUDE_VERSION: string
 declare var parentCapString: string
-declare var capDetailObjResult: ScriptResult<CapDetailScriptModel|undefined>
+declare var capDetailObjResult: ScriptResult<CapDetailScriptModel>
 declare var currentUserGroupObj: UserGroupModel
-declare var parentCapId: boolean
+declare var parentCapId: boolean | CapIDModel
 declare var feeFactor: String
 declare var partialCap: boolean
-declare var AInfo: undefined
+declare var AInfo: [{ [key: string]: any }]
 declare var capDetail: CapDetailScriptModel
 declare var balanceDue: number
 declare var feesInvoicedTotal: number
@@ -62,7 +33,7 @@ declare var fileDateYYYYMMDD: string
 declare var fileDate: string
 declare var fileDateObj: ScriptDateTime
 declare var capStatus: String
-declare var capName: null
+declare var capName: String | null
 declare var appTypeString: String
 declare var appTypeAlias: String
 declare var appTypeResult: CapTypeModel
@@ -82,6 +53,7 @@ declare var feeSeqList: undefined
 declare var br: string
 declare var debug: string
 declare var message: string
+declare var startTime: number | undefined 
 declare var startDate: undefined
 declare var vEventName: String
 declare var vScriptName: String
@@ -92,14 +64,11 @@ declare var enableVariableBranching: boolean
 declare var useTaskSpecificGroupName: boolean
 declare var useAppSpecificGroupName: boolean
 declare var disableTokens: boolean
-declare var showDebug: boolean
+declare var showDebug: boolean | number
 declare var showMessage: boolean
 declare var vLevel: number
 declare var loopk: string
-declare var OCCUPANCYTYPE: undefined
-declare var CONSTRUCTIONTYPE: undefined
+declare var i: string | number
 declare var getCapResult: ScriptResult<any>
-declare var fTask: TaskItemScriptModel
-declare var wfTaskObj: TaskItemScriptModel
 declare var stopBranch: boolean
 declare var loopGlob: string
