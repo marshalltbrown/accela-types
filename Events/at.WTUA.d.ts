@@ -1,5 +1,6 @@
 /// <reference path="../AA/at.aa.d.ts" />
 /// <reference path="at.generic-event-vars.d.ts" />
+/// <reference path="../AA/at.stdFunctions.d.ts" />
 // ASI Table Arrays are also accessible via their name in all caps, no spaces.
 
 declare var timeElapsedMin: undefined
