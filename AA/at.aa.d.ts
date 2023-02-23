@@ -9032,11 +9032,11 @@ declare namespace aa {
 		/**
 		 * Get parcel and attributes.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} queryFormat (QueryFormat) - QueryFormat
-		 * @returns (ScriptResult<any>) - ScriptResult
+		 * @param {QueryFormat | null} queryFormat (QueryFormat) - QueryFormat
+		 * @returns (ScriptResult<java.util.ArrayList>) - ScriptResult
 		 */
-		function getParcelandAttribute(capID:CapIDModel, queryFormat:QueryFormat): ScriptResult<any>
-
+		function getParcelandAttribute(capID:CapIDModel, queryFormat:QueryFormat | null): ScriptResult<java.util.ArrayList<ParcelModel>>
+		
 		/**
 		 * Get parcel and attributes by cap id.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel

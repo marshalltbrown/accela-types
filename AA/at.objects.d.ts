@@ -14481,6 +14481,8 @@ equals(obj:object): boolean
 
 }
 declare class ParcelModel {
+    
+parcelAttribute: java.util.ArrayList<B3APOAttributeModel>
 /**
  * Get parcel model.
  * @returns (ParcelModel) - ParcelModel
@@ -14820,9 +14822,9 @@ setParcelNumber(parcelNumber:string): void
 
 /**
  * Get parcel attributes.
- * @returns (Collection) - Collection
+ * @returns - a java array of B3APOAttributeModel
  */
-getParcelAttribute(): Collection
+getParcelAttribute(): java.util.ArrayList<B3APOAttributeModel>
 
 /**
  * Set parcel attributes.
