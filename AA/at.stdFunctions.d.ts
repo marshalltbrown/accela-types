@@ -1050,12 +1050,159 @@ Creates or updates a reference license professional based on the information of 
 */
 declare function createRefLicProfFromLicProf(): string | false;
 
+
+/**
+ * Adds a specified number of days to a given date, with the option to consider working days only.
+ * @param {string} td - The input date as a string in "mm/dd/yyyy" format or any string that converts to a JS date.
+ * @param {number} amt - The number of days to add, can be positive or negative.
+ * @param {boolean} [useWorking] - Optional. If true, only working days are considered while performing the date arithmetic.
+ * @returns {string} The resulting date as a string in "mm/dd/yyyy" format.
+ */
+declare function dateAdd(td: string, amt: number, useWorking?: boolean): string;
+
+
+/**
+ * Adds specified number of months to a given date and returns the new date as a string in the format MM/DD/YYYY.
+ * If the input date is on the last day of the month, the new date will also be the end of the month.
+ * If the input date is not the last day of the month, the new date will have the same day of the month, unless such a day doesn't exist in the month, in which case the new date will be on the last day of the month.
+ *
+ * @param {string|null} pDate - The input date as a string, or null to use the current date.
+ * @param {number} pMonths - The number of months to add or subtract, as a positive or negative integer.
+ * @returns {string} The resulting date as a string in the format MM/DD/YYYY.
+ */
+declare function dateAddMonths(pDate: string | null, pMonths: number): string;
+
+/**
+ * Calculates the difference in days between two dates.
+ *
+ * @param {Date|string} date1 - The first date or a string in 'yyyy-mm-dd' format.
+ * @param {Date|string} date2 - The second date or a string in 'yyyy-mm-dd' format.
+ * @return {number} The number of days between date1 and date2.
+ */
+declare function dateDiff(date1: Date | string, date2: Date | string): number;
+
+/**
+ * Formats a given date as a string in either "YYYY-MM-DD" or "MM/DD/YYYY" (default) format.
+ *
+ * @param {number} pMonth - The month of the date (1-12).
+ * @param {number} pDay - The day of the date (1-31).
+ * @param {number} pYear - The year of the date.
+ * @param {string} [pFormat="MM/DD/YYYY"] - The desired date format, either "YYYY-MM-DD" or "MM/DD/YYYY".
+ * @returns {string} The formatted date string.
+ */
+declare function dateFormatted(pMonth: number, pDay: number, pYear: number, pFormat?: string): string;
+
+/**
+ * Returns the date of the next occurrence of a specified date (month and day) after a given date.
+ * Optionally, the returned date can be restricted to an odd or even year.
+ *
+ * @param {string|number} pMonth - The target month (1-12).
+ * @param {string|number} pDay - The target day (1-31).
+ * @param {string|Date} pDate - The base date to find the next occurrence after, in YYYY-MM-DD format or as a Date object.
+ * @param {string} [pOddEven] - Optional. 'ODD' for the next occurrence in an odd year, 'EVEN' for the next occurrence in an even year.
+ * @returns {string} The next occurrence date in MM/DD/YYYY format.
+ */
+declare function dateNextOccur(pMonth: string | number, pDay: string | number, pDate: string | Date, pOddEven?: string): string;
+
+/**
+ * Deactivates active tasks in the given process.
+ * 
+ * @param {string} processName - The name of the process containing tasks to be deactivated.
+ * @returns {boolean} - Returns false if failed to get workflow object; otherwise, no return value.
+ */
+declare function deactivateActiveTasks(processName: string): boolean | void;
+
+/**
+ * Deactivates a specified task in the workflow.
+ * 
+ * @param {string} wfstr - The name of the task to deactivate.
+ * @param {string} [processName] - Optional process name for the task. If provided, only tasks with this process name will be deactivated.
+ * @returns {boolean} Returns false if an error occurs; otherwise, no return value is provided.
+ */
+declare function deactivateTask(wfstr: string, processName?: string): boolean | void;  
+
+/**
+ * Decodes a base64 encoded string.
+ *
+ * @param {string} input - The base64 encoded string to decode.
+ * @return {string} The decoded string.
+ */
+declare function decode64(input: string): string;
+
+/**
+ * Deletes a licensed professional along with public user associations.
+ *
+ * @param {LicenseScriptModel} lsm - A licenseScriptModel object.
+*/
+declare function deleteLicensedProfessional(lsm: LicenseScriptModel): void;
+
+/**
+ * Deletes a specified task from the workflow of a given CAP ID.
+ *
+ * @param {CapIDModel} targetCapId - The target CAP ID to delete the task from.
+ * @param {string} deleteTaskName - The name of the task to be deleted.
+ * @returns {boolean} Returns true if the task is deleted successfully, otherwise false.
+ */
+declare function deleteTask(targetCapId: CapIDModel, deleteTaskName: string): boolean;
+
+/**
+ * Generates a string representation of an object's properties and methods.
+ *
+ * @param {Object} obj - The object to describe.
+ * @returns {string} The string representation of the object's properties and methods.
+ */
+declare function describe(obj: Object): string;
+
+/**
+ * Describes an object by logging its class, functions, and properties.
+ *
+ * @param {Object} obj2describe - The object to be described.
+ */
+declare function describeObject(obj2describe: Object): void;
+
+/**
+ * Includes multiple scripts based on the appTypeArray global object and a global prefix.
+ * The function assumes that appTypeArray is an array with at least 4 elements, and
+ * includes scripts following specific patterns.
+ *
+ * @global
+ * @see appTypeArray - an array containing information about the application type.
+ * @see prefix - a string that represents a common prefix for included scripts.
+ */
+declare function doScriptActions(): void;
+
+/**
+ * Executes or documents the standard choice actions specified by the given entry.
+ *
+ * @param {string} stdChoiceEntry - The standard choice entry to be executed or documented.
+ * @param {boolean} doExecution - If true, execute the standard choice actions; if false, document the standard choice actions.
+ * @param {number} docIndent - The indentation level for documentation purposes.
+ */
+declare function doStandardChoiceActions(stdChoiceEntry: string, doExecution: boolean, docIndent: number): void;
+
+/**
+ * Writes a formatted string to the output with optional header and indentation.
+ *
+ * @param {string} dstr - The string to be written to the output.
+ * @param {boolean} [header=false] - If true, horizontal lines will be added before and after the string.
+ * @param {number} [indent=0] - The number of indentation levels to add before the string.
+ */
+declare function docWrite(dstr: string, header?: boolean, indent?: number): void;
+
+/**
+ * Checks if an ASI (Application Specific Information) field exists on a record.
+ * @param {string} asiFieldName - The name of the ASI field to check for existence.
+ * @param {CapIDModel} [itemCap=capId] - Optional cap ID to check against. Defaults to the global capId if not provided.
+ * @returns {boolean} - Returns true if the ASI field exists on the record, otherwise returns false.
+ */
+declare function doesASIFieldExistOnRecord(asiFieldName: string, itemCap: CapIDModel)
+
 // D
 
 /**
 
 Appends a string to the global debug variable and outputs to the log if debugging is enabled
-@param {string} dstr - The string to append to the debug variable and potentially log
+@param {string|String} dstr - The string to append to the debug variable and potentially log
 @param {number} [vLevel=1] - The level of debugging for the string (optional)
 */
-declare function logDebug(dstr: string, vLevel?: number): void;
+declare function logDebug(dstr: string|String, vLevel?: number): void;
