@@ -2978,11 +2978,11 @@ declare namespace aa {
 
 		/**
 		 * Link an application to a parent application.
-		 * @param {CapIDModel} projectID (CapIDModel) - CapIDModel
-		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
+		 * @param {CapIDModel} parentCapID (CapIDModel) - CapIDModel
+		 * @param {CapIDModel} childCapID (CapIDModel) - CapIDModel
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function createAppHierarchy(projectID:CapIDModel, capID:CapIDModel): ScriptResult<any>
+		function createAppHierarchy(parentCapID:CapIDModel, childCapID:CapIDModel): ScriptResult<any>
 
 		/**
 		 * Gets the children.
