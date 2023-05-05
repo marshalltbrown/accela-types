@@ -1197,7 +1197,33 @@ declare function docWrite(dstr: string, header?: boolean, indent?: number): void
  */
 declare function doesASIFieldExistOnRecord(asiFieldName: string, itemCap: CapIDModel)
 
-// D
+// E
+/**
+ * Edits the name of an application.
+ * @param {string} newname - The new name for the application.
+ * @param {CapIDModel} [itemCap=capId] - The ID of the application to be edited. If none provided, defaults to the global capId.
+ * @return {boolean} - True if the name was successfully edited, False otherwise.
+ */
+declare function editAppName(newname: string, itemCap?: string): boolean;
+
+/**
+ * Edits a specific app specific information field.
+ * 
+ * @param {string} itemName - The name of the app specific information field.
+ * @param {string} itemValue - The new value for the app specific information field.
+ * @param {CapIDModel} [itemCap] - The ID of the record to update. (optional) If no capId provided, uses the global capId.
+ * 
+ * @returns {void}
+ */
+declare function editAppSpecific(itemName: string, itemValue: string, itemCap?: string): void;
+
+/**
+ * Edits the value of an app specific field for an ACA record.
+ * 
+ * @param {string} itemName - The name of the app specific field to edit.
+ * @param {string} itemValue - The new value for the app specific field.
+ */
+declare function editAppSpecific4ACA(itemName: string, itemValue: string): void;
 
 /**
 
