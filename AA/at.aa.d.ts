@@ -2978,11 +2978,11 @@ declare namespace aa {
 
 		/**
 		 * Link an application to a parent application.
-		 * @param {CapIDModel} projectID (CapIDModel) - CapIDModel
-		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
+		 * @param {CapIDModel} parentCapID (CapIDModel) - CapIDModel
+		 * @param {CapIDModel} childCapID (CapIDModel) - CapIDModel
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function createAppHierarchy(projectID:CapIDModel, capID:CapIDModel): ScriptResult<any>
+		function createAppHierarchy(parentCapID:CapIDModel, childCapID:CapIDModel): ScriptResult<any>
 
 		/**
 		 * Gets the children.
@@ -9032,11 +9032,11 @@ declare namespace aa {
 		/**
 		 * Get parcel and attributes.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} queryFormat (QueryFormat) - QueryFormat
-		 * @returns (ScriptResult<any>) - ScriptResult
+		 * @param {QueryFormat | null} queryFormat (QueryFormat) - QueryFormat
+		 * @returns (ScriptResult<java.util.ArrayList>) - ScriptResult
 		 */
-		function getParcelandAttribute(capID:CapIDModel, queryFormat:QueryFormat): ScriptResult<any>
-
+		function getParcelandAttribute(capID:CapIDModel, queryFormat:QueryFormat | null): ScriptResult<java.util.ArrayList<ParcelModel>>
+		
 		/**
 		 * Get parcel and attributes by cap id.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel

@@ -4569,6 +4569,43 @@ getPriority(): number
 setPriority(): void
 
 }
+declare class CapContactScriptModel {
+    setCountry(country: string): void
+    getClass(): any
+    wait(duration: number): void
+    wait(): void
+    wait(duration: number): void
+    getCountry(): string
+    notifyAll(): void
+    getCapID(): CapIDModel
+    notify(): void
+    setLastName(lastName: string): void
+    hashCode(): number
+    setAuditID(id: string): void
+    getAuditID(): string
+    setCapID(capId: CapIDModel): void
+    getCapContactModel(): CapContactModel
+    getLastName(): string
+    setEmail(email: string): void
+    setFirstName(firstName: string): void
+    equals(item: any): boolean
+    getEmail(): string
+    getServiceProviderCode(): string
+    toString(): string
+    getPeople(): PeopleModel
+    setServiceProviderCode(servProvCode: string): void
+    getFirstName(): string
+    setPeople(person: PeopleModel): void
+    country: string
+    lastName: string
+    capID: CapIDModel
+    email: string
+    auditID: string
+    serviceProviderCode: string
+    people: PeopleModel
+    firstName: string
+    capContactModel: CapContactModel
+}
 declare class CapContactModel {
 /**
  * Get capContactModel.
@@ -14481,6 +14518,8 @@ equals(obj:object): boolean
 
 }
 declare class ParcelModel {
+    
+parcelAttribute: B3APOAttributeModel[]
 /**
  * Get parcel model.
  * @returns (ParcelModel) - ParcelModel
@@ -14820,9 +14859,9 @@ setParcelNumber(parcelNumber:string): void
 
 /**
  * Get parcel attributes.
- * @returns (Collection) - Collection
+ * @returns - a java array of B3APOAttributeModel
  */
-getParcelAttribute(): Collection
+getParcelAttribute(): B3APOAttributeModel[]
 
 /**
  * Set parcel attributes.
@@ -22149,6 +22188,17 @@ getRows(): RowModel[]
 setRows(rows:RowModel[]): void
 
 }
+interface Task {
+    statu
+	comment
+	note
+    statusdate
+	process
+	processID
+    step
+    active
+
+}
 declare class TaskItemScriptModel {
 /**
  * Get TaskItemModel.
@@ -24883,7 +24933,296 @@ declare class RefActivityModel {
 }
 declare class QueryFormat {
 }
+declare class SysUserScriptModel {
+    getEmailTemplateParams()
+    getUserDisciplines()
+    getUserDistricts()
+    userID: string | null
+    userFirstName: string | null
+    userLastName: string | null
+    userMiddleName: string | null
+    userInitial: string | null
+    userEmail: string | null
+    userTitle: string | null
+    phoneNumber: string | null
+    dailyInspUnits: string | null
+    isInspector: string | null
+    userStatus: string | null
+    billingRate: string | null
+    cashierID: string | null
+    userObject: SysUserModel
+    userFullName: string | null
+}
 declare class SysUserModel {
+    setPassword()
+    setEmployeeId()
+    setPasswordExpireTimeFrame()
+    setEndLocation()
+    getSearchFullName()
+    getSupervisorFlag()
+    setTeamName()
+    getDistrict()
+    getDispMiddleName()
+    getEmployeeId()
+    getFullName()
+    setPreferredChannel()
+    setSupervisorFlag()
+    getResValue()
+    getRecdate()
+    getDisplayIntitialSeqNumber()
+    setIntegratedFlag()
+    setLastLoginTime()
+    setDisplayInitial()
+    getfName()
+    setMiddleName()
+    fillI18NStatus()
+    getUserID()
+    setfName()
+    setOriginalValue()
+    getDistinguishedName()
+    setmName()
+    getIntegratedFlag()
+    getPassword()
+    isDisplayInitial()
+    toString()
+    setAccountDisablePeriod()
+    getDispFirstName()
+    getDailyInspUnits()
+    getRate1()
+    getUserStatus()
+    setOfficeCode()
+    setLastChangePassword()
+    getDivisionCode()
+    getSeqNumber()
+    setDiscipline()
+    getDefaultRouteType()
+    getIsInspector()
+    getLoginfailcount()
+    setDispDeptOfUser()
+    getOfficeCode()
+    setResLangId()
+    toArrayForDisplay()
+    setDailyInspUnits()
+    getResStringValue()
+    getEnforcePermissionMobileFlag()
+    setTitle()
+    setUserGroupModelList()
+    setEmail()
+    setFirstName()
+    getAccessModeSeqNuber()
+    setRecdate()
+    setBillingRateSequenctNumber()
+    setIsInspector()
+    getDispValue()
+    getStartLocation()
+    getResObject()
+    setSectionCode()
+    notifyAll()
+    getPasswordExpireTimeFrame()
+    getMiddleName()
+    setLoginfailcount()
+    hashCode()
+    isEnableI18N()
+    getDiscipline()
+    setGaUserID()
+    getAuditStatus()
+    setUserStatus()
+    getDispDeptOfUser()
+    getBillngRate()
+    getInitial()
+    getResColumns()
+    setLocked()
+    setSearchFullName()
+    setlName()
+    clone()
+    setAuditStatus()
+    getBillingRateSequenctNumber()
+    getDepartmentName()
+    setChangePasswordNextLogin()
+    getStatus()
+    setSection508Flag()
+    getResInitial()
+    isSameDepartment()
+    setDepartmentName()
+    getWorkload()
+    toArray()
+    getAccountDisablePeriod()
+    setResInitial()
+    getEmployeeName()
+    getGaUserID()
+    getSectionCode()
+    getAccessMode()
+    getResId()
+    setResId()
+    setBillngRate()
+    setDivisionCode()
+    setEnforcePermissionMobileFlag()
+    wait()
+    setWorkload()
+    notify()
+    setLastName()
+    getGroupCode()
+    getPreferredChannel()
+    setDistinguishedName()
+    getResMiddleName()
+    fillLanguageModel()
+    setUserID()
+    setAllowUserChangePassword()
+    setDeptOfUser()
+    getModuleName()
+    getLastName()
+    setBureauCode()
+    equals()
+    setAccessMode()
+    getCashierID()
+    getClass()
+    getOriginalValue()
+    getLockedtime()
+    getDeptOfUser()
+    getDepartment()
+    getmName()
+    getResLastName()
+    getAgencyCode()
+    getTitle()
+    getLastChangePassword()
+    getDispLastName()
+    setDisplayIntitialSeqNumber()
+    getPhoneNumber()
+    getTeamName()
+    setModuleName()
+    setGroupCode()
+    setDepartment()
+    getDispText()
+    getBureauCode()
+    setAgencyCode()
+    setDefaultRouteType()
+    getLocked()
+    setRate1()
+    isEnbaleI18N()
+    getResFirstName()
+    setLockedtime()
+    setPhoneNumber()
+    getEmail()
+    setCashierID()
+    setServiceProviderCode()
+    getDispTitle()
+    getNamesuffix()
+    getChangePasswordNextLogin()
+    hasResource()
+    getDispStringValue()
+    getResLangId()
+    setFullName()
+    setDistrict()
+    getLastLoginTime()
+    setInitial()
+    getAllowUserChangePassword()
+    setDispValue()
+    setResValue()
+    getDispInitial()
+    setNamesuffix()
+    setStartLocation()
+    setStatus()
+    setEmployeeName()
+    getSection508Flag()
+    getUserGroupModelList()
+    setDispText()
+    setSeqNumber()
+    getlName()
+    setAccessModeSeqNuber()
+    getServiceProviderCode()
+    getFirstName()
+    getEndLocation()
+    teamName
+    billingRateSequenctNumber
+    discipline
+    userID
+    userGroupModelList
+    defaultRouteType
+    password
+    changePasswordNextLogin
+    endLocation
+    sectionCode
+    dispMiddleName
+    agencyCode
+    searchFullName
+    email
+    employeeId
+    enbaleI18N
+    accessModeSeqNuber
+    resLangId
+    groupCode
+    dispFirstName
+    departmentName
+    employeeName
+    dispTitle
+    originalValue
+    enforcePermissionMobileFlag
+    firstName
+    resColumns
+    phoneNumber
+    district
+    resMiddleName
+    cashierID
+    mName
+    recdate
+    distinguishedName
+    accessMode
+    title
+    displayInitial
+    startLocation
+    billngRate
+    sameDepartment
+    class
+    accountDisablePeriod
+    serviceProviderCode
+    fullName
+    resValue
+    enableI18N
+    dispLastName
+    middleName
+    integratedFlag
+    dispDeptOfUser
+    lName
+    lastChangePassword
+    moduleName
+    passwordExpireTimeFrame
+    bureauCode
+    dispText
+    rate1
+    officeCode
+    resFirstName
+    dailyInspUnits
+    resStringValue
+    status
+    lastName
+    userStatus
+    loginfailcount
+    dispInitial
+    preferredChannel
+    dispValue
+    initial
+    resLastName
+    workload
+    divisionCode
+    lastLoginTime
+    section508Flag
+    auditStatus
+    seqNumber
+    namesuffix
+    locked
+    resId
+    resInitial
+    isInspector
+    supervisorFlag
+    dispStringValue
+    gaUserID
+    displayIntitialSeqNumber
+    lockedtime
+    fName
+    allowUserChangePassword
+    department
+    resObject
+    deptOfUser
 }
 declare class AddressConditionModel {
 }
