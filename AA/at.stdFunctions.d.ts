@@ -1479,12 +1479,1726 @@ declare function executeASITable(tableArray: any[]): void
  */
 declare function exists(eVal: any, eArray: any[]): boolean
 
-// F functions
 
 /**
+ * Calculates the total fee amount for a given CapId, excluding any fees with a fee code in the optional parameter array
+ * @param {CapIDModel} checkCapId - The CapId to calculate the fee amount for
+ * @param {string[]} [exceptArray] - An optional array of fee codes to exclude from the calculation
+ * @returns {number} The total fee amount for the given CapId, excluding any fees with a fee code in the optional parameter array
+ */
+declare function feeAmountExcept(checkCapId: CapIDModel, exceptArray?: string[]): number
 
-Appends a string to the global debug variable and outputs to the log if debugging is enabled
-@param {string|String} dstr - The string to append to the debug variable and potentially log
-@param {number} [vLevel=1] - The level of debugging for the string (optional)
+/**
+ * Searches payment fee items and returns the unpaid balance of a fee item
+ * Sums fee items if more than one exists.
+ * 
+ * @param {string} [feestr] - The fee code to search for
+ * @param {string} [feeSch] - Optional fee schedule
+ * 
+ * @returns {number} The unpaid balance of the fee item
+ */
+declare function feeBalance(feestr?: string, feeSch?: string): number
+
+
+/**
+ * Searches payment fee items and returns the unpaid balance of a fee item
+ * @param {number} searchDays - Days in future or past to search for ex. -120 would search for today -120 days
+ * @param {string} [feestr] - Fee Code to search for
+ * @param {string} [feeSch] - Optional Fee Schedule
+ * @returns {number} - The unpaid balance of a fee item
+ */
+declare function feeBalanceFromDate(searchDays: number, feestr?: string, feeSch?: string): number
+
+/**
+ * Gets total for fees assessed during date range
+ * @param {Date} pStartDate - Start date of the date range
+ * @param {Date} pEndDate - End date of the date range
+ * @param {String[]} [statusArray] - Optional fee statuses to check for
+ * @returns {Number} feesTotal - Total of applicable fees
+ */
+declare function feeCopyByDateRange(pStartDate: Date, pEndDate: Date, statusArray?: string[]): number
+
+
+/**
+ * Checks if a fee exists on the current record
+ * @param {string} feestr - The fee code to check for
+ * @param {string} [...statuses] - Optional statuses to check for
+ * @returns {boolean} - True if the fee exists, false otherwise
+ */
+declare function feeExists($feestr$: string, ...$statuses$: string[]): boolean
+
+/**
+ * Gets total for fees assessed during date range
+ * @param {Date} pStartDate - Start date of date range
+ * @param {Date} pEndDate - End date of date range
+ * @param {String[]} [statusArray] - Optional fee statuses to check for
+ * @returns {Number} feesTotal - Total of applicable fees
+ */
+declare function feeGetTotByDateRange(pStartDate: Date, pEndDate: Date, statusArray?: String[]): Number
+
+/**
+ * Calculates the quantity of a fee item
+ * @param {string} feestr - The fee code to calculate the quantity of
+ * @returns {number} feeQty - The quantity of the fee item
+ */
+declare function feeQty(feestr: string): number
+
+
+/**
+ * Generates a report file which can be attached to an email.
+ * @param {CapIDModel} itemCap - The cap ID of the record.
+ * @param {string} reportName - The name of the report.
+ * @param {string} module - The module of the report.
+ * @param {Object} [parameters] - Optional parameters for the report.
+ * @returns {string} The report file.
+ */
+declare function generateReport(itemCap: CapIDModel, reportName: string, module: string, parameters?: Object): string
+
+
+/**
+ * Generates a report for a given workflow item
+ * @param {CapIDModel} itemCap - The capId of the workflow item
+ * @param {string} reportName - The name of the report to generate
+ * @param {string} module - The module of the report to generate
+ * @param {HashMap
+ * } parameters - The parameters of the report to generate
+ * @return {ReportResultModel} reportOutput - The output of the report
+ */
+declare function generateReport4Workflow($itemCap$: CapIDModel, $reportName$: string, $module$: string, $parameters$: HashMap): ReportResultModel
+
+
+/**
+ * Creates a generic template object from a given template
+ * @param {EntityPKModel} gtmp - The template to create the generic template object from
+ * @returns {Object} - The generic template object
+ */
+declare function genericTemplateObject(gtmp: EntityPKModel): Object
+/**
+ * Adds additional parameters to a hashtable for document download
+ * @param {Object} params - The hashtable to add parameters to
+ * @param {String} acaUrl - The URL of the ACA site
+ * @param {DocumentModel} docModel - The document model
+ * @returns {Object} The updated hashtable
+ */
+declare function getACADocDownloadParam4Notification(params: Object, acaUrl: String, docModel: DocumentModel): Object
+/**
+ * Retrieves the ACA URL for the supplied document model
+ * @param {string} acaUrl - The base ACA URL
+ * @param {DocumentModel} documentModel - The document model
+ * @returns {string} acaDocUrl - The ACA URL for the supplied document model
+ */
+declare function getACADocumentDownloadUrl(acaUrl: string, documentModel: DocumentModel): string
+/**
+ * Adds additional parameters to a hashtable for use in notifications
+ * @param {Object} params - The hashtable to add parameters to
+ * @param {String} acaUrl - The URL of the ACA record
+ * @returns {Object} The hashtable with additional parameters added
+ */
+declare function getACARecordParam4Notification(params: Object, acaUrl: String): Object
+
+/**
+ * Gets the ACA record URL
+ * @param {string} acaUrl - The URL of the ACA site
+ * @param {global.CapID} capId - The global CapID object
+ * @param {global.Cap} cap - The global Cap object
+ * @param {global.AgencyCode} aa - The global AgencyCode object
+ * @returns {string} The ACA record URL
+ */
+declare function getACARecordURL(acaUrl: string): string
+
+/**
+ * Returns the path to the record on ACA.
+ * @param {CapIDModel} [itemCap] - Optional CapID to use instead of the global capId.
+ * @returns {string} The path to the record on ACA.
+ */
+declare function getACAUrl(itemCap?: CapIDModel): string
+
+
+/**
+ * Retrieves the county of an address of a specified type
+ * @param {string} aType - The type of address to retrieve the county of
+ * @param {string} [capId] - Optional Cap ID to use for address retrieval
+ * @return {string} The county of the address, or false if not found
+ */
+declare function getAddressCountyByAddressType(aType: string, capId?: string): string
+
+
+/**
+ * Retrieves the address line of a given address type for a given capId
+ * @param {string} aType - The address type to retrieve
+ * @param {string} [itemCap] - The capId to retrieve the address line from (optional)
+ * @returns {string|boolean} The address line or false if not found
+ */
+declare function getAddressLineByAddressType(aType: string, itemCap?: string): string | boolean
+/**
+ * Retrieves the conditions for a given capId and adds them to the params object
+ * 
+ * @param {Object} params - The object to add the conditions to
+ * @param {String} [pType] - Optional parameter to filter the conditions by type
+ * @param {String} [pStatus] - Optional parameter to filter the conditions by status
+ * @param {String} [pDesc] - Optional parameter to filter the conditions by description
+ * @param {String} [pImpact] - Optional parameter to filter the conditions by impact
+ * @returns {Object} params - The object with the conditions added
+ */
+declare function getAppConditions(params: Object, pType?: String, pStatus?: String, pDesc?: String, pImpact?: String): Object
+
+/**
+ * Returns the cap Id string of an application based on App-Specific Info and applicationtype.  Returns first result only!
+ * @param {string} ASIName - The name of the App-Specific Info field
+ * @param {string} ASIValue - The value of the App-Specific Info field
+ * @param {string} ats - The application type string
+ * @returns {string} - The cap Id string of the application
+ */
+declare function getAppIdByASI(ASIName: string, ASIValue: string, ats: string): string
+
+/**
+ * Retrieves the cap Id string of an application that has group, type, and name
+ * @param {string} gaGroup - The group of the application
+ * @param {string} gaType - The type of the application
+ * @param {string} gaName - The name of the application
+ * @returns {string} The cap Id string of the application
+ */
+declare function getAppIdByName(gaGroup: string, gaType: string, gaName: string): string
+
+/**
+ * Retrieves the value of an app specific field
+ * @param {string} itemName - The name of the app specific field
+ * @param {CapIDModel} [itemCap] - The capId of the record to retrieve the app specific field from (optional)
+ * @return {string} The value of the app specific field
+ */
+declare function getAppSpecific(itemName: string, itemCap?: CapIDModel): string
+
+/**
+ * Retrieves the capId object of an application
+ * @param {string} appNum - The application number
+ * @returns {CapIDModel} The capId object of the application
+ */
+declare function getApplication(appNum: string): CapIDModel
+
+/**
+ * Retrieves CSLB information for a given license number and populates the license professional record with the data.
+ * @param {boolean} [doPop=false] - Populate the cap lic prof with this data.
+ * @param {boolean} [doWarning=false] - Message if license is expired.
+ * @requires getNode and getProp functions.
+ * @returns {boolean} - Returns true if successful, false if not.
+ */
+declare function getCSLBInfo(doPop?: boolean, doWarning?: boolean): boolean
+
+/**
+ * Returns the capid that matches the current address and app type string.
+ * If multiple records will return the first and warning.
+ * 
+ * @param {string} ats - The application type string.
+ * @returns {string} The capid that matches the current address and app type string.
+ */
+declare function getCapByAddress(ats: string): string
+
+/**
+ * Retrieves the capId from the script environment
+ * @return {CapIDModel} The capId from the script environment
+ */
+declare function getCapId(): CapIDModel
+
+
+/**
+ * Retrieves all caps related to a contact by reference number and checks for matching conditions
+ * @param {CapIDModel} itemCap - The cap ID to search for related caps
+ * @param {String} capType - The type of cap to search for
+ * @param {String} [pType] - Optional parameter for the type of condition to search for
+ * @param {String} [pStatus] - Optional parameter for the status of the condition to search for
+ * @param {String} [pDesc] - Optional parameter for the description of the condition to search for
+ * @param {String} [pImpact] - Optional parameter for the impact of the condition to search for
+ * @returns {CapIDModel[]} matchingCapArray - An array of CapIDModels that match the conditions
+ */
+declare function getCapsWithConditionsRelatedByRefContact($itemCap$: CapIDModel, $capType$: string, $pType$?: string, $pStatus$?: string, $pDesc$?: string, $pImpact$?: string): CapIDModel[]
+
+/**
+ * Retrieves the child tasks of a given task name
+ * @param {string} taskName - The name of the task to retrieve the child tasks of
+ * @param {string} [itemCap] - Optional parameter for the cap ID to use (defaults to the global CapIDModel)
+ * @returns {any[]} - An array of child tasks
+ */
+declare function getChildTasks(taskName: string, itemCap?: string): any[]
+/**
+ * Retrieves an array of children capId objects whose cap type matches pCapType parameter
+ * @param {string} pCapType - The cap type to search for. Wildcard * may be used, e.g. Building/Commercial/Permit/*
+ * @param {CapIDModel} [pParentCapId] - The capId of the parent to search for children of. If not provided, the current capId will be used.
+ * @param {CapIDModel} [pChildCapIdSkip] - Optional capId of child to skip
+ * @returns {capId[]} An array of capId objects
+ */
+declare function getChildren(pCapType: string, pParentCapId?: CapIDModel, pChildCapIdSkip?: CapIDModel): CapIDModel[]
+
+/**
+ * Returns an array of associative arrays with contact attributes.  Attributes are UPPER CASE
+ * @param {string} [capid] - Optional capid
+ * @returns {Array} - An array of associative arrays with contact attributes
+ */
+declare function getContactArray(capid?: string): any[]
+/**
+ * Returns an array of associative arrays with contact attributes.  Attributes are UPPER CASE
+ * @param {string} [capid] - Optional capid
+ * @returns {Array.<Object>} - An array of associative arrays with contact attributes.
+ */
+declare function getContactArrayBefore(capid?: string): Array<Object>
+/**
+ * Retrieves a contact from a given capId based on contact type
+ * @param {string} conType - The contact type to search for
+ * @param {string} capId - The capId to search for the contact in
+ * @returns {object} - The contact object if found, false otherwise
+ */
+declare function getContactByType(conType: string, capId: string): object
+
+
+/**
+ * Retrieves the first contact of a specified type on a record
+ * @param {CapIDModel} itemCap - The record to search for the contact
+ * @param {String} typeToLoad - The type of contact to search for
+ * @returns {contactObj} - The contact object of the specified type
+ */
+declare function getContactObj(itemCap: CapIDModel, typeToLoad: string): any
+/**
+ * Retrieves a contact object from the given itemCap and seqNbr
+ * @param {CapIDModel} itemCap - The CapID of the record
+ * @param {number} seqNbr - The contact sequence number
+ * @returns {contactObj} - The contact object associated with the given itemCap and seqNbr 
+ */
+declare function getContactObjsBySeqNbr(itemCap: CapIDModel, seqNbr: number): any
+
+/**
+ * Retrieves contact objects associated with a given cap
+ * @param {CapIDModel} itemCap - The cap to retrieve contacts from
+ * @param {String[]} [typesToLoad] - Optional array of contact types to retrieve
+ * @param {boolean} [returnOnlyOne] - Optional boolean to indicate if only one contact should be returned
+ * @returns {contactObj[]} An array of contact objects
+ */
+declare function getContactObjs(itemCap: CapIDModel, typesToLoad?: String[], returnOnlyOne?: boolean): any[]
+/**
+ * Retrieves contact objects associated with a given cap.
+ * @param {aa.Cap} itemCap - The cap to retrieve contacts from.
+ * @param {String[]} [typesToLoad] - Optional array of contact types to filter by.
+ * @param {boolean} [returnOnlyOne] - Optional boolean to return only one contact object instead of an array.
+ * @returns {contactObj[]|contactObj} - An array of contact objects or a single contact object.
+ */
+declare function getContactObjsByCap(itemCap: CapIDModel, typesToLoad?: string[], returnOnlyOne?: boolean): any[] | any
+/**
+ * Adds additional parameters to a hashtable based on contact type
+ * 
+ * @param {Object} params - The hashtable to add parameters to
+ * @param {String} conType - The contact type to retrieve
+ * @returns {Object} The hashtable with additional parameters added
+ */
+declare function getContactParams4Notification(params: Object, conType: String): Object
+/**
+ * Calculates the difference in days between the current system date and the date provided
+ * @param {Date} DatetoComp The date to compare against the system date
+ * @returns {Number} The difference in days between the two dates
+ */
+declare function getDateDiff(DatetoComp: Date): number
+
+/**
+ * Retrieves the department name for a given username
+ * @param {string} username - The username of the user
+ * @returns {string} The department name of the user
+ */
+declare function getDepartmentName(username: string): string
+
+/**
+ * Determines the operation type based on the docModelList
+ * @param {Object} docModelList - The list of docModels
+ * @returns {String} The operation type
+ */
+declare function getDocOperation(docModelList: Object): String
+
+
+/**
+ * Retrieves a list of documents associated with the current capId
+ * @returns {DocumentModel[]} An array of DocumentModel objects
+ */
+declare function getDocumentList(): DocumentModel[]
+
+/**
+ * Retrieves GIS objects within a given buffer distance of a Cap
+ * @param {string} svc - The GIS service name
+ * @param {string} layer - The GIS layer name
+ * @param {number} numDistance - The buffer distance
+ * @param {...string} [attributes] - Optional additional attributes to return
+ * @returns {object[]} An array of associative arrays containing the GIS objects
+ */
+declare function getGISBufferInfo(svc: string, layer: string, numDistance: number, ...attributes: string[]): object[]
+
+/**
+ * Retrieves GIS information for a given service, layer, and attribute name
+ * @param {string} svc - The GIS service name
+ * @param {string} layer - The GIS layer name
+ * @param {string} attributename - The GIS attribute name
+ * @return {string} retString - The GIS attribute value
+ */
+declare function getGISInfo(svc: string, layer: string, attributename: string): string
+
+/**
+ * Retrieves an array of attribute values from a GIS layer for a given Cap ID
+ * 
+ * @param {string} svc - The GIS service name
+ * @param {string} layer - The GIS layer name
+ * @param {string} attributename - The GIS attribute name
+ * @returns {string[]} retArray - An array of attribute values
+ */
+declare function getGISInfoArray(svc: string, layer: string, attributename: string): string[]
+
+/**
+ * Retrieves an array of guide sheet objects
+ * @param {number} inspId - The ID of the inspection
+ * @param {CapIDModel} [itemCap] - Optional parameter to specify the cap ID to load from
+ * @requires guideSheetObject definition
+ * @returns {any[]} An array of guide sheet objects
+ */
+declare function getGuideSheetObjects(inspId: number, itemCap?: CapIDModel): any[]
+
+/**
+* Add Inspection Result Parameters for use in Notification Templates. 
+* This should be called from InspectionResultSubmitAfter Event
+*
+* @param {HashMap} params 
+* @return {HashMap}
 */
-declare function logDebug(dstr: string|String, vLevel?: number): void;
+declare function getInspectionResultParams4Notification(params)
+
+/**
+* Add Inspection Schedule After Parameters for use in Notification Templates. 
+* This should be called from InspectionScheduleAfter Event
+*
+* @param {HashMap} params 
+* @param {String} [inspId] 
+* @param {String} [inspInspector] 
+* @param {String} [InspectorFirstName] 
+* @param {String} [InspectorMiddleName] 
+* @param {String} [InspectorLastName] 
+* @param {String} [inspGroup] 
+* @param {String} [inspType] 
+* @param {String} [inspSchedDate] 
+* @return {HashMap}
+*/
+declare function getInspectionScheduleParams4Notification($params$: HashMap): HashMap
+
+/**
+ * Retrieves the inspector ID (string) of the scheduled inspection. Returns the first result.
+ * @param {string} insp2Check - The inspection type to check for.
+ * @returns {string} The inspector ID of the scheduled inspection.
+ */
+declare function getInspector(insp2Check: string): string
+
+
+/**
+ * Returns the inspector ID (string) of the last inspector to result the inspection.
+ * @param {string} insp2Check - The inspection type to check.
+ * @returns {string} The inspector ID of the last inspector to result the inspection.
+ */
+declare function getLastInspector(insp2Check: string): string
+
+/**
+ * Returns the inspector ID (string) of the last inspector that is assigned to the inspection.
+ * @param {string} insp2Check - The inspection type to check.
+ * @returns {string} The inspector ID of the last inspector assigned to the inspection.
+ */
+declare function getLastScheduledInspector(insp2Check: string): string
+
+/**
+ * Retrieves the license professionals associated with a given capId
+ * @param {CapIDModel} itemcapId - The capId to retrieve license professionals from
+ * @returns {LicenseProfessional[]} capLicenseArr - An array of license professionals associated with the given capId
+ */
+declare function getLicenseProfessional(itemcapId: CapIDModel): LicenseProfessionalModel[]
+
+/**
+ * Retrieves the next sequence number for the given mask name.
+ * 
+ * @param {string} maskName - The name of the mask to retrieve the next sequence number for.
+ * @returns {string} The next sequence number for the given mask name.
+ */
+declare function getNextSequence(maskName: string): string
+/**
+ * Retrieves the value of a node from a string
+ * @param {string} fString - The string to search
+ * @param {string} fName - The name of the node to search for
+ * @returns {string} The value of the node
+ */
+declare function getNode(fString: string, fName: string): string
+
+
+/**
+ * Gets the owner(s) of a parcel by capid
+ * @param {CapIDModel} capId - The capid of the parcel
+ * @returns {any[]} - An array of owners associated with the parcel
+ */
+declare function GetOwnersByParcel($capId$: CapIDModel): any[]
+
+/**
+ * Retrieves parcel conditions based on the given parameters
+ * @param {string} [pType] - The type of condition
+ * @param {string} [pStatus] - The status of the condition
+ * @param {string} [pDesc] - The description of the condition
+ * @param {string} [pImpact] - The impact of the condition
+ * @param {CapIDModel} [capID] (optional) - The cap ID to use
+ * @returns {condMatchObj[]} - An array of condition match objects
+ */
+declare function getParcelConditions(pType?: string, pStatus?: string, pDesc?: string, pImpact?: string, capID?: CapIDModel): ParcelConditionModel[]
+
+/**
+ * Retrieves the capId object of the parent. Assumes only one parent.
+ * 
+ * @return {CapIDModel} The capId object of the parent.
+ */
+declare function getParent(): CapIDModel
+
+
+/**
+ * Returns the capId object of the parent. Assumes only one parent!
+ * @param {CapIDModel} itemCap - The capId of the record.
+ * @returns {CapIDModel} - The capId of the parent record.
+ */
+declare function getParentByCapId(itemCap: CapIDModel): CapIDModel
+/**
+ * Retrieves the parent license CAP ID for a renewal record
+ * 
+ * @global aa
+ * @returns {CapIDModel} The parent license CAP ID
+ */
+declare function getParentCapID4Renewal(): CapIDModel
+
+/**
+ * Retrieves the parent license cap ID for a given child cap ID
+ * @param {CapIDModel} itemCap - The child cap ID
+ * @returns {CapIDModel} The parent license cap ID, or null if not found
+ */
+declare function getParentLicenseCapID(itemCap: CapIDModel): CapIDModel
+
+
+/**
+ * Returns the capId array of all parent caps
+ * 
+ * @param {string} [pAppType] - Optional parameter for the application type pattern
+ * @returns {CapID[]} - An array of CapID objects
+ */
+declare function getParents(pAppType?: string): CapIDModel[]
+/**
+ * Retrieves the partial CAP ID from a given CAP ID
+ * @param {CapIDModel} capid - The CAP ID to retrieve the partial CAP ID from
+ * @returns {CapIDModel} The partial CAP ID associated with the given CAP ID
+ */
+declare function getPartialCapID(capid: CapIDModel): CapIDModel
+/**
+ * Retrieves an array of people associated with a given capId
+ * 
+ * @param {CapIDModel} capId - The capId to retrieve people from
+ * @returns {CapContactScriptModel[]} An array of people associated with the given capId, or null if none are found
+ */
+declare function getPeople(capId: CapIDModel): CapContactScriptModel[]
+/**
+ * Adds the primary address line to the params hashtable
+ * @param {Hashtable} params - The hashtable to add the primary address line to
+ *  @returns {Hashtable} The params hashtable with the primary address line added
+ */
+declare function getPrimaryAddressLineParam4Notification(params: Hashtable): Hashtable
+/**
+ * Adds primary owner parameters to a hashtable for use in notifications
+ * 
+ * @param {Hashtable} params - The hashtable to add parameters to
+ * @returns {Object} The hashtable with the added parameters
+ */
+declare function getPrimaryOwnerParams4Notification(params: Hashtable): Object
+
+/**
+ * Retrieves the value of a property from a string
+ * @param {string} fString - The string to search
+ * @param {string} fName - The name of the property to search for
+ * @returns {string} The value of the property
+ */
+declare function getProp(fString: string, fName: string): string
+ /**
+
+ * Adds additional parameters to a hashtable for use in notifications
+
+ * @param {Object} params - The hashtable to add parameters to
+
+ * @param {String} altID - The alternate ID of the record
+
+ * @param {String} capName - The name of the record
+
+ * @param {String} capStatus - The status of the record
+
+ * @param {String} fileDate - The file date of the record
+
+ * @param {String} balanceDue - The balance due of the record
+
+ * @returns {Object} params - The hashtable with additional parameters added
+
+ */
+
+declare function getRecordParams4Notification(params: Object): Object
+
+/**
+ * Retrieves a reference license professional based on a state license number
+ * 
+ * @param {string} refstlic - The state license number
+ * @returns {LicenseScriptModel} refLicObj - The reference license professional object
+ */
+declare function getRefLicenseProf(refstlic: string): LicenseScriptModel
+
+/**
+ * Returns an array of capids that share the same address as the current cap
+ * @param {string} ats - The Application Type String
+ * @returns {any[]} retArr - An array of capids
+ */
+declare function getRelatedCapsByAddress(ats: string): any[]
+
+/**
+ * Returns an array of capids that match parcels on the current app. Includes all parcels.
+ * @param {string} ats - App type string to check for
+ * @returns {any[]} - An array of capids
+ */
+declare function getRelatedCapsByParcel(ats: string): any[]
+/**
+ * Gets the renewal CAP by parent CAPID for review
+ * 
+ * @param {CapIDModel} parentCapid - The parent CAPID
+ * @returns {aa.ProjectScriptModel} The renewal CAP for review, or null if not found 
+ */
+declare function getRenewalCapByParentCapIDForReview(parentCapid: CapIDModel): any
+
+/**
+ * Retrieves the Reported Channel from the Cap Detail Model
+ * @param {CapIDModel} [itemCap] - Optional CapId to use instead of the global capId
+ * @returns {string} - The Reported Channel
+ */
+declare function getReportedChannel($itemCap$?: CapIDModel): string
+/**
+ * Retrieves the root node of a given nodeId.
+ * 
+ * @param {CapIDModel} nodeId - The CapID of the node to retrieve the root node of.
+ * @param {number} [depth=0] - The depth of the node.
+ * @returns {CapIDModel} The root node of the given nodeId.
+ */
+declare function getRootNode(nodeId: CapIDModel, depth?: number): CapIDModel
+/**
+ * Retrieves the root node of a given project.
+ * @param {string} nodeId - The node ID of the project.
+ * @returns {CapIDModel[]} An array of CapIDModel objects representing the root nodes of the project.
+ */
+declare function getRoots(nodeId: string): CapIDModel[]
+ /**
+ * Retrieves the ID of the first scheduled occurrence of an inspection
+ * @param {string} insp2Check - The type of inspection to check for
+ * @return {string|boolean} The ID of the first scheduled occurrence of the inspection, or false if none is found
+ */
+declare function getScheduledInspId(insp2Check: string): string | boolean
+
+/**
+ * Gets the standard choices domain for this application type.
+ * Uses free-form alphanumeric indexing. All enabled script controls will execute.
+ * 
+ * @param {string} strControl - The control to get the standard choices domain for.
+ * @returns {any[]} An array of pairObj objects.
+ */
+declare function getScriptAction(strControl: string): any[]
+
+/**
+ * Gets the standard choices domain for this application type.
+ * @param {string} strControl - The control to get the standard choices domain for.
+ * @returns {any[]} An array of pairObj objects.
+ */
+declare function getScriptAction_v1_6(strControl: string): any[]
+
+/**
+ * Retrieves the script text for a given script name
+ * @param {string} vScriptName - The name of the script to retrieve
+ * @param {string} [servProvCode] - The service provider code (optional)
+ * @param {boolean} [useProductScripts] - Whether or not to use product scripts (optional)
+ * @returns {string} The script text
+ */
+declare function getScriptText(vScriptName: string, servProvCode?: string, useProductScripts?: boolean): string
+
+/**
+ * Retrieves the short notes from the Cap Detail Model
+ * @param {CapIDModel} [itemCap] - Optional CapID to use instead of the global capId
+ * @returns {string} - The short notes from the Cap Detail Model
+ */
+declare function getShortNotes(itemCap?: CapIDModel): string
+
+
+/**
+ * Retrieves the due date of a task
+ * @param {string} wfstr - The task description
+ * @param {string} [processName] - The name of the process (optional)
+ * @returns {Date} The due date of the task
+ */
+declare function getTaskDueDate(wfstr: string, processName?: string): Date
+
+
+/**
+ * Gets the task status for a given workflow group
+ * @param {string} stask - The workflow group to get the task status for
+ * @returns {string} - The task statuses for the given workflow group
+ */
+declare function getTaskStatusForEmail(stask: string): string
+
+/**
+ * Retrieves the URL to a new record of the specified type
+ * @param {string} ACAURL - The URL of the Accela Citizen Access website
+ * @param {string} servProvCode - The service provider code
+ * @param {string} group - The group of the record type
+ * @param {string} typetype - The type of the record type
+ * @param {string} subtype - The subtype of the record type
+ * @param {string} category - The category of the record type
+ * @returns {string|boolean} The URL to the new record or false if no service was found
+ */
+declare function getURLToNewRecord(ACAURL: string, servProvCode: string, group: string, typetype: string, subtype: string, category: string): string | boolean
+
+/**
+ * Retrieves the email address of a user
+ * @param {string} [userId] - Optional parameter for userid
+ * @returns {string|boolean} - The email address of the user or false if not found
+ */
+declare function getUserEmail(userId?: string): string | boolean
+
+/**
+ * Retrieves the full name of a user
+ * @param {string} [userId] - Optional parameter for userid
+ * @returns {string|boolean} - The full name of the user or false if not found
+ */
+declare function getUserFullName(userId?: string): string | boolean
+
+
+/**
+ * Returns an array of userObj objects for all users in the system
+ * 
+ * @return {userObj[]} Array of userObj objects
+ */
+declare function getUserObjs(): SysUserScriptModel[]
+
+
+/**
+ * getUserObjsByDiscipline
+ * Description: Returns an array of userObj objects for all users in the system that match userDiscipline
+ * 
+ * @param userDiscipline {string}
+ * @return array {userObj}
+ */
+declare function getUserObjsByDiscipline(userDiscipline: string): SysUserScriptModel[]
+
+
+/**
+ * getUserObjsByDisciplineAndDistrict
+ * Description: Returns an array of userObj objects for all users in the system that match userDiscipline and districtName
+ * 
+ * @param userDiscipline {string}
+ * @param districtName {string} (optional)
+ * @return array {userObj}
+ */
+declare function getUserObjsByDisciplineAndDistrict(userDiscipline: string, districtName?: string): SysUserScriptModel[]
+
+
+/**
+ * getUserObjsByDistrict
+ * Description: Returns an array of userObj objects for all users in the system that match districtName
+ * 
+ * @param districtName {string} - The district name to search for
+ * @return array {userObj} - An array of userObj objects
+ */
+declare function getUserObjsByDistrict(districtName: string): SysUserScriptModel[]
+
+
+/**
+* Add Workflow Task Update After Parameters for use in Notification Templates. 
+* This should be called from WorkflowTaskUpdateAfter Event
+*
+* @param {HashMap} params - The HashMap to add parameters to
+* @param {String} [wfTask] - The workflow task
+* @param {String} [wfStatus] - The workflow status
+* @param {String} [wfDate] - The workflow date
+* @param {String} [wfComment] - The workflow comment
+* @param {String} [wfStaffUserID] - The workflow staff user ID
+* @param {String} [wfHours] - The workflow hours
+* @return {HashMap} - The HashMap with added parameters
+*/
+declare function getWorkflowParams4Notification(params: HashMap, wfTask?: String, wfStatus?: String, wfDate?: String, wfComment?: String, wfStaffUserID?: String, wfHours?: String): HashMap
+
+
+/**
+ * Creates a guideSheetObject object
+ * @param {GGuideSheetModel} gguidesheetModel - The GGuidesheetModel object
+ * @param {GGuideSheetItemModel} gguidesheetItemModel - The GGuidesheetItemModel object
+ * @returns {void}
+ */
+declare function guideSheetObject(gguidesheetModel: GGuideSheetModel, gguidesheetItemModel: GGuideSheetItemModel): void
+
+/**
+ * Handles an error by logging it and optionally rolling back a transaction
+ * @param {Error} err - The error object
+ * @param {String} context - The context in which the error occurred
+ * @param {Boolean} [rollBack=true] - Whether or not to roll back a transaction
+ * @param {Boolean} [showError=true] - Whether or not to show the error
+ */
+declare function handleError(err: Error, context: String, rollBack?: Boolean, showError?: Boolean): void
+
+
+/**
+ * Checks if the target CAP has a primary address
+ * @param {CapIDModel} capID - The CAP ID to check
+ * @returns {boolean} - True if the target CAP has a primary address, false otherwise
+ */
+declare function hasPrimaryAddressInCap(capID: CapIDModel): boolean
+
+/**
+ * Encodes XML data for use in a web page
+ * @param {string} xmlData - The XML data to be encoded
+ * @returns {string} The encoded XML data
+ */
+declare function xmlEscapeXMLToHTML(xmlData: string): string
+
+/**
+ * Includes a script in the current environment
+ * @param {string} s - The script to include
+ * @param {Date} thisDate - The current date
+ * @param {number} thisTime - The current time
+ * @param {string} st - The script text
+ * @returns {void}
+ */
+declare function include(s: string): void
+
+
+/**
+ * Attaches a subprocess to a task
+ * @param {string} taskName - The name of the task to attach the subprocess to
+ * @param {string} process - The name of the subprocess to attach
+ * @param {boolean} completeReqd - Indicates if the task must be completed before the subprocess can be started
+ * @param {string} [itemCap] - Optional capId to use instead of the global capId (global)
+ * @returns {boolean} - True if the subprocess was successfully attached, false otherwise
+ */
+declare function insertSubProcess(taskName: string, process: string, completeReqd: boolean, itemCap?: string): boolean
+
+
+/**
+ * Inserts a new task into the workflow
+ * @param {string} sourceTaskName - The name of the source task
+ * @param {string} newTaskName - The name of the new task
+ * @param {string} insertTaskType - The type of task to insert (N or P)
+ * @param {CapIDModel} [itemCap] - The CapID to use (optional)
+ * @returns {Task} The new task item
+ */
+declare function insertTask(sourceTaskName: string, newTaskName: string, insertTaskType: string, itemCap?: CapIDModel): any
+
+/**
+ * Cancels all inspections on the given record
+ * @param {CapIDModel} capId - The record ID
+ * @returns {boolean} isCancelled - True if all inspections were cancelled, false otherwise
+ */
+declare function inspCancelAll(capId: CapIDModel): boolean
+
+
+/**
+ * Invoices all assessed fees having fcode and fperiod
+ * 
+ * @param {string} fcode - The fee code
+ * @param {string} fperiod - The fee period
+ * @returns {boolean} feeFound - Indicates if the fee was found
+ */
+declare function invoiceFee($fcode$: string, $fperiod$: string): boolean
+/**
+ * Checks if a string is blank
+ * @param {string} str - The string to check
+ * @returns {boolean} - True if the string is blank, false otherwise
+ */
+declare function isBlank(str: string): boolean
+/**
+ * Retrieves the root node of a given nodeId
+ * @param {CapIDModel} nodeId - The CapID of the node to retrieve the root node of
+ * @param {number} [depth=1] - The depth of the root node to retrieve
+ * @returns {CapIDModel} - The CapID of the root node 
+ */
+declare function getRootNode(nodeId: CapIDModel, depth?: number): CapIDModel
+/**
+ * Compares two CapContactScriptModel objects to determine if they are a match.
+ * 
+ * @param {CapContactScriptModel} capContactScriptModel - The first CapContactScriptModel object to compare.
+ * @param {CapContactScriptModel} capContactScriptModel2 - The second CapContactScriptModel object to compare.
+ * 
+ * @returns {boolean} - True if the two CapContactScriptModel objects are a match, false otherwise.
+ */
+declare function isMatchPeople(capContactScriptModel: CapContactScriptModel, capContactScriptModel2: CapContactScriptModel): boolean
+
+/**
+ * Checks if a license is ready to be renewed
+ * @param {CapIDModelModel} capid - The CAP ID to check
+ * @returns {boolean} - True if the license is ready to be renewed, false otherwise
+ */
+declare function isReadyRenew(capid: CapIDModel): boolean
+
+/**
+ * Checks to see if the renewal process can be initiated
+ * 
+ * @param {CapIDModel} parentCapID - The parent CAP ID
+ * @param {CapIDModel} partialCapID - The partial CAP ID
+ * @returns {boolean} - True if the renewal process can be initiated, false otherwise
+ */
+declare function isRenewProcess(parentCapID: CapIDModel, partialCapID: CapIDModel): boolean
+/**
+ * Checks if two nodes are the same
+ * @param {Object} node1 - The first node to compare
+ * @param {Object} node2 - The second node to compare
+ * @returns {boolean} - True if the nodes are the same, false otherwise
+ */
+declare function isSameNode(node1: Object, node2: Object): boolean
+
+/**
+ * Checks if an inspection type is scheduled for the current record
+ * @param {string} inspType - The inspection type to check for
+ * @returns {boolean} - True if the inspection type is scheduled, false otherwise
+ */
+declare function isScheduled(inspType: string): boolean
+
+/**
+ * Checks if a task is active
+ * @param {string} wfstr - The task name
+ * @param {string} [processName] - The process name (optional)
+ * @returns {boolean} - True if the task is active, false otherwise
+ */
+declare function isTaskActive(wfstr: string, processName?: string): boolean
+
+/**
+ * Checks if a task is complete
+ * @param {string} wfstr - The task name
+ * @param {string} [processName] - The subprocess name (optional)
+ * @returns {boolean} - True if the task is complete, false otherwise
+ */
+declare function isTaskComplete(wfstr: string, processName?: string): boolean
+
+/**
+ * Checks if the task status of a workflow task matches the given status
+ * @param {string} wfstr - The workflow task to check
+ * @param {string} wfstat - The status to check against
+ * @param {string} [processName] - The name of the subprocess (optional)
+ * @returns {boolean} - True if the task status matches the given status, false otherwise
+ */
+declare function isTaskStatus(wfstr: string, wfstat: string, processName?: string): boolean
+
+/**
+ * Converts a Javascript Date to an ASI 0 pad MM/DD/YYYY
+ * @param {Date} dateValue - The date to be converted
+ * @returns {string} - The converted date in MM/DD/YYYY format
+ */
+declare function jsDateToASIDate(dateValue: Date): string
+
+/**
+ * Converts a JavaScript Date object to a string in MM/DD/YYYY format
+ * @param {Date} pJavaScriptDate - The JavaScript Date object to convert
+ * @returns {string} - The date in MM/DD/YYYY format
+ */
+declare function jsDateToMMDDYYYY(pJavaScriptDate: Date): string
+/**
+ * Edits expiration status and/or date
+ * @param {string} pExpStatus - The new expiration status
+ * @param {date} pExpDate - The new expiration date
+ * @requires licenseObject
+ */
+declare function licEditExpInfo(pExpStatus: string, pExpDate: Date): void
+
+/**
+ * Creates a licenseObject object
+ * @param {string} licnumber - The license number
+ * @param {CapIDModel} [itemCap] - Optional renewal Cap ID -- uses the expiration on the renewal CAP.
+ * @returns {any}
+ */
+declare function licenseObject(licnumber: string, itemCap?: CapIDModel): any
+/**
+ * Links a public user to a contact type.
+ * @param {string} [contactType='Applicant'] - The contact type to link the public user to.
+ * @returns {PublicUserModel} The public user model.
+ */
+declare function linkPublicUserToContact(contactType?: string): PublicUserModel
+
+/**
+ * Loads an ASI Table from the specified Cap ID
+ * @param {string} tname - The name of the ASI Table to load
+ * @param {string} [itemCap] - Optional Cap ID to load from
+ * @returns {any[]} - An array of objects containing the ASI Table values
+ */
+declare function loadASITable(tname: string, itemCap?: string): any[]
+
+/**
+ * Loads App Specific tables into their own array of arrays.  Creates global array objects
+ * 
+ * @param {CapIDModel} [itemCap] - Optional parameter, cap ID to load from
+ * @returns {void}
+ */
+declare function loadASITables(itemCap?: CapIDModel): void
+
+/**
+ * Loads App Specific tables into their own array of arrays.  Creates global array objects
+ * 
+ * @param {CapIDModel} [itemCap] - Optional parameter, cap ID to load from.  If no CAP Id specified, use the capModel
+ * @returns {void} 
+ */
+declare function loadASITables4ACA(itemCap?: CapIDModel): void
+
+
+/**
+ * Loads App Specific tables into their own array of arrays.  Creates global array objects
+ */
+declare function loadASITablesBefore(): void
+
+/**
+ * Loads an associative array of Address Attributes.
+ * 
+ * @param {Object} thisArr - The associative array to be populated with address attributes.
+ * @param {CapIDModel} [itemCap] - Optional cap ID to load from.
+ * @returns {void}
+ */
+declare function loadAddressAttributes(thisArr: Object, itemCap?: CapIDModel): void
+
+/**
+ * Loads address attributes from the ACA cap model into an associative array
+ * 
+ * @param {Object} thisArr - Associative array to store address attributes
+ * @requires cap - Global object
+ */
+declare function loadAddressAttributes4ACA(thisArr: Object): void
+
+/**
+ * Loads App Specific Info into an associative array
+ * @param {Object} thisArr - Associative array to load App Specific Info into
+ * @param {String} [itemCap] - Optional cap ID to load from
+ */
+declare function loadAppSpecific(thisArr: Object, itemCap?: String): void
+
+
+/**
+ * Loads App Specific Info into an associative array
+ * @param {Object} thisArr - Associative array to load App Specific Info into
+ * @param {String} [itemCap] - Optional Cap ID to load from
+ * @param {Boolean} [useAppSpecificGroupName] - Optional boolean to indicate whether to use the App Specific Group Name
+ */
+declare function loadAppSpecific4ACA(thisArr: Object, itemCap?: String, useAppSpecificGroupName?: Boolean): void
+
+
+/**
+ * Loads the App Specific information for a contact
+ * @param {Object} thisArr - An object to store the App Specific information
+ * @param {Number} contactSeqNbr - The sequence number of the contact
+ * @param {CapIDModel} [itemCap] - Optional parameter for the CapID to use (defaults to the current CapIDModel)
+ * @returns {void}
+ */
+declare function loadAppSpecific4Contact(thisArr: Object, contactSeqNbr: number, itemCap?: CapIDModel): void
+
+/**
+ * Loads the fees into an array of objects.
+ * @param {CapIDModel} [capId] - Optional Cap ID to use.
+ * @returns {any[]} An array of Fee objects.
+ */
+declare function loadFees(capId?: CapIDModel): any[]
+
+/**
+ * Loads the guide sheet items for a given inspection
+ * @param {string} inspId - The ID of the inspection
+ * @param {string} [itemCap] - Optional cap ID to load from
+ * @returns {Object} - An associative array of Guide Sheet Items
+ */
+declare function loadGuideSheetItems(inspId: string, itemCap?: string): Object
+
+/**
+ * Loads parcel attributes into an associative array
+ * @param {Object} thisArr - Associative array to store parcel attributes
+ * @param {CapIDModel} [itemCap] - Optional cap ID to load from
+ * @returns {void}
+ */
+declare function loadParcelAttributes(thisArr: Object, itemCap?: CapIDModel): void
+
+/**
+ * Loads task specific information into an array
+ * @param {Object[]} thisArr - Array to store task specific information
+ * @param {CapIDModel} [itemCap] - Optional cap ID to load from
+ * @returns {boolean} - True if successful, false if not
+ */
+declare function loadTaskSpecific(thisArr: Object[], itemCap?: CapIDModel): boolean
+/**
+ * Loads tasks for a given cap ID
+ * @param {string} ltcapidstr - The cap ID to load tasks for
+ * @returns {Task[]} An array of Task objects
+ */
+declare function loadTasks($ltcapidstr$: string): Task[]
+
+/**
+ * Logs a debug message to the system log.
+ * @param {string} dstr - The debug message to log.
+ * @param {number} [vLevel=1] - The debug level to log the message at.
+ */
+declare function logDebug(dstr: string, vLevel?: number): void
+
+/**
+ * Logs the values of global variables
+ * @param {any[]} globArray - An array of global variables
+ * @returns {void}
+ */
+declare function logGlobals(globArray: any[]): void
+
+/**
+ * Logs a message to the console
+ * @param {string} dstr - The message to log
+ * @requires console
+ */
+declare function logMessage(dstr: string): void
+
+/**
+ * Looks up a standard choice value based on the supplied parameters
+ * @param {string} stdChoice - The standard choice to look up
+ * @param {string} stdValue - The value to look up
+ * @return {string} strControl - The description of the standard choice value
+ */
+declare function lookup(stdChoice: string, stdValue: string): string
+
+/**
+ * Looks up a date range from a standard choice
+ * @param {string} stdChoiceEntry - The standard choice entry to look up
+ * @param {Date} dateValue - The date to compare against
+ * @param {number} [valNumber] - Optional parameter to return a specific value from the standard choice
+ * @return {string} The value from the standard choice
+ */
+declare function lookupDateRange(stdChoiceEntry: string, dateValue: Date, valNumber?: number): string
+/**
+ * Looks up fees based on a given valuation
+ * @param {string} stdChoiceEntry - The standard choice entry to use for the lookup
+ * @param {string} stdChoiceValue - The standard choice value to use for the lookup
+ * @param {number} capval - The cap value to use for the lookup
+ * @param {number} [valNumber] - Optional parameter to indicate which value to return
+ * @returns {number} The fee associated with the given valuation
+ */
+declare function lookupFeesByValuation(stdChoiceEntry: string, stdChoiceValue: string, capval: number, valNumber?: number): number
+
+/**
+ * Looks up fees based on a sliding scale
+ * @param {string} stdChoiceEntry - The standard choice entry to lookup
+ * @param {string} stdChoiceValue - The standard choice value to lookup
+ * @param {number} capval - The cap value to use for the lookup
+ * @param {number} [valNumber] - Optional parameter to specify the value number to return (defaults to 2)
+ * @returns {number} The fee value
+ */
+declare function lookupFeesByValuationSlidingScale(stdChoiceEntry: string, stdChoiceValue: string, capval: number, valNumber?: number): number
+
+
+/**
+ * Loops through a workflow task and closes it with the given status
+ * @param {string} wfstr - The workflow task to loop through
+ * @param {string} wfstat - The status to close the workflow task with
+ * @param {string} wfcomment - The comment to add to the workflow task
+ * @param {string} wfnote - The note to add to the workflow task
+ * @param {string} [processName] - The name of the subprocess (optional)
+ * @returns {boolean} - Returns true if successful, false if not
+ */
+declare function loopTask(wfstr: string, wfstat: string, wfcomment: string, wfnote: string, processName?: string): boolean
+
+/**
+ * Creates a new set of license professionals
+ * @param {string} desiredSetId - The desired set ID
+ * @param {string} [name] - The name of the set (optional)
+ * @param {string} [type] - The type of the set (optional)
+ * @param {string} [comment] - The comment of the set (optional)
+ */
+declare function lpSet(desiredSetId: string, name?: string, type?: string, comment?: string): void
+
+
+/**
+ * Checks if a value matches any of the following arguments
+ * @param {any} eVal - The value to check
+ * @param {any} argList - The list of arguments to check against
+ * @returns {boolean} - Returns true if value matches any of the arguments
+ */
+declare function matches(eVal: any, argList: any): boolean
+/**
+ * Returns the next work day
+ * @param {Date} [td] - The date to start from (optional)
+ * @returns {Date} The next work day
+ */
+declare function nextWorkDay(td?: Date): Date
+ /**
+  * Opens a new window with the given URL
+  * @param {string} myurl - The URL to open in the new window
+  * @requires showDebug or showMessage must be true for this to work
+  */
+ declare function openUrlInNewWindow(myurl: string): void
+
+
+/**
+ * Creates a pairObj object with the given activity ID
+ * @param {string} actID - The activity ID
+ */
+declare function pairObj(actID: string): void
+
+/**
+ * Checks if a parcel condition exists for a given condition type
+ * @param {string} condtype - The condition type to check for
+ * @returns {boolean} - True if the condition exists, false otherwise
+ */
+declare function parcelConditionExists(condtype: string): boolean
+
+/**
+ * Checks if a parcel exists on the current or specified cap
+ * @param {string} [itemCap] - Optional cap ID to load from
+ * @returns {boolean} - True if parcel exists, false if not
+ */
+declare function parcelExistsOnCap(itemCap?: string): boolean
+
+
+/**
+ * Performs the following:
+ * Retrieves primary trust account on capId 
+ * Initiates payment from identified trust account for the ammount of the fee associated with fseqNbr
+ * If payment successful applies payment in full to fee associated with fseqNbr
+ * Generates receipt for payment for fee associated with fseqNbr
+ * 
+ * @param {number} fSeqNbr - The fee sequence number associated with the fee to be paid
+ * @param {CapIDModel} [itemCap] - Optional parameter to specify the capId to use for the payment. If not specified, the current capId will be used.
+ * @returns {boolean} - Returns true if payment was successful, false otherwise
+ */
+declare function paymentByTrustAccount(fSeqNbr: number, itemCap?: CapIDModel): boolean
+
+
+/**
+ * This function performs the following:
+ * Retrieve primary trust account on capId 
+ * Initiates payment from identified trust account for the ammount of the fee associated with fseqNbr
+ * If payment successful applies payment in full to fee associated with fseqNbr
+ * Generates receipt for payment for fee associated with fseqNbr
+ * If any of the above fails returns false, otherwise will return true.
+ * Fee must be invoiced for function to work, use optional capId parameter with addFee() call to ensure fee is invoiced prior to this function being called.
+ * 
+ * @param {number} fSeqNbr - The fee sequence number associated with the fee to be paid.
+ * @param {CapIDModel} [itemCap] - Optional parameter to specify the capId to use for the payment.
+ * @returns {boolean} - Returns true if payment is successful, false otherwise.
+ */
+declare function paymentByTrustAccount(fSeqNbr: number, itemCap?: CapIDModel): boolean
+ /**
+  * Gets the total amount not applied on the current CAP
+  * @param {CapIDModel} capId - The CAP ID to get the total amount not applied for
+  * @return {number} The total amount not applied on the current CAP
+  */
+declare function paymentGetNotAppliedTot(capId: CapIDModel): number
+
+/**
+ * Prepares a renewal record for a parent record
+ * @param {CapIDModel} parentCapId - The CapIDModel of the parent record
+ * @param {CapIDModel} capId - The CapIDModel of the renewal record
+ * @returns {boolean} - True if the renewal record was successfully prepared, false otherwise
+ */
+declare function prepareRenewal(parentCapId: CapIDModel, capId: CapIDModel): boolean
+
+/**
+ * Checks if the application has a GIS object in proximity
+ * @param {string} svc - The GIS service name
+ * @param {string} layer - The GIS layer name
+ * @param {number} numDistance - The distance to check
+ * @param {string} [distanceType="feet"] - The type of distance to check (optional, defaults to "feet")
+ * @returns {boolean} - True if the application has a GIS object in proximity
+ */
+declare function proximity(svc: string, layer: string, numDistance: number, distanceType?: string): boolean
+
+/**
+ * Checks if the application has a GIS object in proximity that contains the attributeName = attributeValue
+ * @param {string} svc - The GIS service name
+ * @param {string} layer - The GIS layer name
+ * @param {number} numDistance - The distance to check
+ * @param {string} distanceType - The type of distance to check (e.g. feet, meters, etc.)
+ * @param {string} attributeName - The name of the attribute to check
+ * @param {string} attributeValue - The value of the attribute to check
+ * @returns {boolean} - True if the application has a GIS object in proximity that contains the attributeName = attributeValue
+ */
+declare function proximityToAttribute(svc: string, layer: string, numDistance: number, distanceType: string, attributeName: string, attributeValue: string): boolean
+
+/**
+ * Recalcs fees
+ * @param {capIdModel} itemCap - The capIdModel of the record
+ * @returns {boolean} - The success of the recalculation
+ */
+declare function recalcFees(itemCap: CapIDModel): boolean
+
+/**
+ * Retrieves the value of a custom attribute from a reference license professional record
+ * @param {string} pLicNum - The state license number of the reference license professional
+ * @param {string} pAttributeName - The name of the custom attribute
+ * @return {string} The value of the custom attribute, or "INVALID PARAMETER" if the parameters are invalid, "NO LICENSE FOUND" if the reference license professional record is not found, or "ATTRIBUTE NOT FOUND" if the custom attribute is not found
+ */
+declare function refLicProfGetAttribute(pLicNum: string, pAttributeName: string): string
+
+/**
+ * Returns expiration date from reference licensed professional record. Skips disabled reference licensed professionals.
+ * @param {string} pLicNum - The license number.
+ * @param {string} [pDateType] - The date type. Options: "EXPIRE" (default), "RENEW","ISSUE","BUSINESS","INSURANCE".
+ * @return {Date} The expiration date.
+ */
+declare function refLicProfGetDate(pLicNum: string, pDateType?: string): Date
+
+/**
+ * Removes all rows from an ASI table
+ * @param {string} tableName - The name of the ASI table
+ * @param {string} [itemCap] - The capId to remove the ASI table from (optional)
+ * @returns {boolean} - True if the ASI table was successfully removed, false otherwise
+ */
+declare function removeASITable(tableName: string, itemCap?: string): boolean
+
+
+/**
+ * Removes all non-invoiced fee items for a CAP ID
+ * @param {CapIDModel} itemCap - The CAP ID to remove fees from
+ */
+declare function removeAllFees(itemCap: CapIDModel): void
+
+/**
+ * Removes a condition from a CAP
+ * @param {string} cType - The type of condition to remove
+ * @param {string} cDesc - The description of the condition to remove
+ * @param {string} [itemCap] - Optional CAP ID to remove the condition from. If not provided, the condition will be removed from the current CAP.
+ * @returns {boolean} - True if the condition was successfully removed, false otherwise
+ */
+declare function removeCapCondition(cType: string, cDesc: string, itemCap?: string): boolean
+
+
+/**
+ * Removes all fee items for a fee code and period
+ * @param {string} fcode - The fee code to remove
+ * @param {string} fperiod - The fee period to remove
+ * @param {aa.finance.getFeeItemsByFeeCodeAndPeriod} [getFeeResult] - Global object used to get fee items
+ * @param {aa.finance.removeFeeItem} [editResult] - Global object used to remove fee items
+ * @returns {void}
+ */
+declare function removeFee(fcode: string, fperiod: string): void
+
+/**
+ * Removes a condition from a parcel
+ * @param {string | null} [parcelNum] - The parcel number. If not provided, the condition will be removed from all parcels on the CAP
+ * @param {string} cType - The condition type
+ * @param {string} cDesc - The condition description
+ * @return {void}
+ */
+declare function removeParcelCondition(parcelNum: string | null, cType: string, cDesc: string): void
+
+
+/**
+ * Removes a reference contact address from a record contact
+ * @param {CapIDModel} itemCap - The cap ID of the record
+ * @param {Number} cSeqNumber - The sequence number of the record contact
+ * @param {ContactAddressModel} rConAddrModel - The contact address model of the reference contact
+ * @returns {Boolean} - True if the reference contact address was successfully removed, false otherwise
+ */
+declare function removeRefContactAddressFromRecordContact(itemCap: CapIDModel, cSeqNumber: Number, rConAddrModel: ContactAddressModel): Boolean
+
+/**
+ * Removes a task from a given record
+ * @param {CapIDModel} targetCapId - The record to remove the task from
+ * @param {string} removeTaskName - The name of the task to remove
+ * @param {string} [processName] - The name of the process the task belongs to (optional)
+ * @returns {boolean} - True if the task was removed, false otherwise
+ */
+declare function removeTask(targetCapId: CapIDModel, removeTaskName: string, processName?: string): boolean
+
+/**
+ * Replaces tokens in a message with values from script variables or AInfo
+ * @param {string} m - The message to be replaced
+ * @returns {string} The message with tokens replaced
+ */
+declare function replaceMessageTokens(m: string): string
+
+/**
+ * Replaces a node in a string with new contents
+ * @param {string} fString - The string to be modified
+ * @param {string} fName - The name of the node to be replaced
+ * @param {string} fContents - The new contents of the node
+ * @returns {string} The modified string
+ */
+declare function replaceNode(fString: string, fName: string, fContents: string): string
+
+/**
+ * This function will result an inspection based on the inspection type, status, result date, and result comment.
+ * @param {string} inspType - The type of inspection to result.
+ * @param {string} inspStatus - The status of the inspection to result.
+ * @param {date} resultDate - The date of the inspection result.
+ * @param {string} resultComment - The comment of the inspection result.
+ * @param {CapIDModel} [capId] - The capId of the record (optional).
+ * @return {void}
+ */
+declare function resultInspection(inspType: string, inspStatus: string, resultDate: Date, resultComment: string, capId?: CapIDModel): void
+
+
+/**
+ * results workflow task and sets the status and performs next step based on configured status
+ * @param {String} wfstr - The workflow task to be set
+ * @param {String} wfstat - The status to set the workflow task to
+ * @param {String} [wfcomment] - The comment to be associated with the workflow task
+ * @param {String} [wfnote] - The note to be associated with the workflow task
+ * @param {String} [processName] - The name of the process (optional)
+ * @returns {Boolean}
+ */
+declare function resultWorkflowTask(wfstr: string, wfstat: string, wfcomment: string, wfnote: string, processName: string): boolean
+
+/**
+ * Executes the scripts and standard choices associated with an event
+ * @param {string} eventName - The name of the event
+ * @param {string} [controlString] - Optional control string to execute standard choices
+ * @throws {Error} If an error occurs
+ */
+declare function runEvent(eventName: string, controlString?: string): void
+
+/**
+ * Runs a report and emails it to the contact associated with the record.
+ * @param {CapIDModel} itemCap - The record to run the report for.
+ * @param {String} reportName - The name of the report to run.
+ * @param {CapContactModel} conObj - The contact associated with the record.
+ * @param {Array} rParams - An array of parameters to pass to the report.
+ * @param {Array} eParams - An array of parameters to pass to the email.
+ * @param {String} emailTemplate - The name of the email template to use.
+ * @param {String} module - The name of the module to run the report from.
+ * @param {String} mailFrom - The email address to send the report from.
+ * @returns {Boolean} - True if the report was sent, false otherwise.
+ */
+declare function runReport4Email(itemCap: CapIDModel, reportName: String, conObj: CapContactModel, rParams: any[], eParams: any[], emailTemplate: String, module: String, mailFrom: String): Boolean
+
+
+/**
+ * Generates a report and either emails it or pops it up on the screen
+ * @param {CapIDModel} itemCap - The record to generate the report for
+ * @param {String} reportName - The name of the report to generate
+ * @param {String} module - The name of the module to generate the report for
+ * @param {HashMap} rParams - The parameters to pass to the report
+ * @param {HashMap} [eParams] - The parameters to pass to the email template (optional)
+ * @param {String} [emailTemplate] - The name of the email template to use (optional)
+ */
+declare function runReport4EmailOrPrint(itemCap: CapIDModel, reportName: string, module: string, rParams: HashMap, eParams?: HashMap, emailTemplate?: string): void
+
+/**
+ * Runs a report and attaches it to the specified record
+ * @param {CapIDModel} itemCapId - The record to attach the report to
+ * @param {string} aaReportName - The name of the report to run
+ * @param {string} [parameters] - Optional report parameter pairs
+ * @returns {boolean} - True if the report was successfully run and attached, false otherwise
+ */
+declare function runReportAttach(itemCapId: CapIDModel, aaReportName: string, ...parameters: string[]): boolean
+
+/**
+ * Schedule Inspection
+ * @param {capIDModel} itemCap 
+ * @param {string} iType 
+ * @param {number} DaysAhead 
+ * @param {string} [inspTime] 
+ * @param {string} [inspComm] 
+ * @returns {void}
+ */
+declare function scheduleInspect(itemCap: CapIDModel, iType: string, DaysAhead: number, inspTime?: string, inspComm?: string): void
+
+/**
+ * Schedules an inspection of the specified type for the given date
+ * @param {string} iType - The type of inspection to be scheduled
+ * @param {string} DateToSched - The date to schedule the inspection
+ * @param {string} [inspectorID] - The ID of the inspector to assign to the inspection (optional)
+ * @param {string} [inspTime] - The time of the inspection (optional)
+ * @param {string} [inspComm] - The comment for the inspection (optional)
+ * @returns {void}
+ */
+declare function scheduleInspectDate(iType: string, DateToSched: string, inspectorID?: string, inspTime?: string, inspComm?: string): void
+
+/**
+ * Schedules an inspection of the specified type for the specified number of days ahead.
+ * @param {string} iType - The type of inspection to be scheduled.
+ * @param {number} DaysAhead - The number of days ahead to schedule the inspection.
+ * @param {string} [inspectorID] - Optional inspector ID.
+ * @param {string} [inspTime] - Optional time of inspection in HH12:MIAM or AM format.
+ * @param {string} [inspComm] - Optional comment for the inspection.
+ * @returns {void}
+ */
+declare function scheduleInspection(iType: string, DaysAhead: number, inspectorID?: string, inspTime?: string, inspComm?: string): void
+
+/**
+ * Searches Related Caps
+ * @param {string} pProjType - Application type marking highest point to search.  Ex. Building/Project/NA/NA
+ * @param {string} pSearchType - Application type to search for. Ex. Building/Permit/NA/NA 
+ * @returns {CapID[]} - CapID array of all unique matching SearchTypes
+ */
+declare function searchProject(pProjType: string, pSearchType: string): CapIDModel[]
+
+/**
+ * Sends an email and saves it as a document
+ * @param {string} emailFrom - The email address of the sender
+ * @param {string} emailTo - The email address of the recipient
+ * @param {string} emailCC - The email address of the carbon copy recipient
+ * @param {string} templateName - The name of the email template
+ * @param {object} params - The parameters to be used in the email template
+ * @param {object} capIDScriptModel - The cap ID script model
+ * @param {string} [reportFile] - The report file (optional)
+ * @returns {boolean} - True if the email was sent successfully, false otherwise
+ */
+declare function sendNotification(emailFrom: string, emailTo: string, emailCC: string, templateName: string, params: object, reportFile?: string): boolean
+
+/**
+ * Sets the contact type flag for all contacts associated with the given itemCap.
+ * @param {CapIDModel} itemCap - The capId of the item to set the contact type flag for.
+ * @param {Lookup} CONTACT TYPE FLAG - The lookup used to determine the contact type flag.
+ * @returns {void}
+ */
+declare function setContactTypeFlagByType(itemCap: CapIDModel): void
+/**
+ * Sets the IVR tracking number for a given record
+ * @param {number} ivrnum - The IVR tracking number to set
+ * @param {Environment} aa.env - Global Environment object
+ * @param {CapScriptModel} aa.cap.newCapScriptModel - Global CapScriptModel object
+ * @param {CapModel} aa.cap.editCapByPK - Global CapModel object
+ * @returns {void}
+ */
+declare function setIVR(ivrnum: number): void
+
+/**
+ * Sets the expiration date and status of a license.
+ * @param {CapIDModel} itemCap - The license capId.
+ * @param {Date} [calcDateFrom] - The from date to use in the date calculation (optional).
+ * @param {Date} [dateOverride] - Override the calculation, this date will be used (optional).
+ * @param {String} [renewalStatus] - If other than active override the status (optional).
+ * @returns {Boolean} - True if successful, false otherwise.
+ */
+declare function setLicExpirationDate($itemCap$: CapIDModel, $calcDateFrom$?: Date, $dateOverride$?: Date, $renewalStatus$?: String): Boolean
+
+/**
+ * Sets a workflow task to open or complete
+ * @param {string} wfstr - The workflow task to set
+ * @param {string} isOpen - 'Y' or 'N' to set the task to open or closed
+ * @param {string} isComplete - 'Y' or 'N' to set the task to complete or incomplete
+ * @param {string} [processName] - Optional subprocess name
+ * @returns {boolean} - True if successful, false if not
+ */
+declare function setTask(wfstr: string, isOpen: string, isComplete: string, processName?: string): boolean
+
+
+/**
+ * Trims whitespace from the beginning and end of a string.
+ * @param {String} this - The string to trim.
+ * @returns {String} The trimmed string.
+ */
+declare function trim(this: String): String
+
+/**
+ * Removes all non-numeric characters from a string
+ * @param {string} fullStr - The string to be stripped of non-numeric characters
+ * @returns {string} The stripped string
+ */
+declare function stripNN(fullStr: string): string
+
+/**
+ * Closes all tasks in CAP with specified status and comment.
+ * @param {string} pStatus - The status to set the tasks to.
+ * @param {string} pComment - The comment to set the tasks to.
+ * @param {string} excludeName - Optional task names to exclude. Extra parameters may be added to add more exclusions.
+ * @return {void}
+ */
+declare function taskCloseAllExcept(pStatus: string, pComment: string, excludeName?): void
+
+
+/**
+ * Retrieves the status of a workflow task
+ * @param {string} wfstr - The workflow task to check
+ * @param {string} [processName] - Optional subprocess name
+ * @param {CapIDModel} [itemCap] - Optional capId to check
+ * @returns {string} The status of the workflow task
+ */
+declare function taskStatus(wfstr: string, processName?: string, itemCap?: CapIDModel): string
+
+/**
+ * Checks to ensure the task status date is not null prior to getting the status date.
+ * @param {string} wfstr - The task description.
+ * @param {string} [processName] - The subprocess name.
+ * @param {CapIDModel} [itemCap] - The cap ID.
+ * @returns {string|boolean} - The status date in the format MM/DD/YYYY or false on fail.
+ */
+declare function taskStatusDate(wfstr: string, processName?: string, itemCap?: CapIDModel): string | boolean
+
+/**
+ * Replaces tokens in a string with values from the AInfo global object
+ * @param {string} tstr - The string to replace tokens in
+ * @returns {string} The string with tokens replaced
+ */
+declare function token(tstr: string): string
+
+/**
+ * Transfers fees and payments from one record to another
+ * @param {CapIDModel} sourceCapId - The source record CapIDModel
+ * @param {CapIDModel} targetCapId - The target record CapIDModel
+ * @returns {void}
+ */
+declare function transferFeesAndPayments(sourceCapId: CapIDModel, targetCapId: CapIDModel): void
+
+/**
+ * Transfer funds from the current application to the parent application
+ * @param {string} parentAppNum - The parent application number
+ * @param {number} dollarAmount - The amount of funds to transfer
+ * @returns {boolean} - Returns true if the transfer was successful, false otherwise
+ */
+declare function transferFunds(parentAppNum: string, dollarAmount: number): boolean
+
+
+/**
+ * Transfers funds from one record to another and applies the payment to the target record
+ * @param {CapIDModel} receiptCapId - The capIDModel of the record from which funds are being transferred
+ * @param {CapIDModel} targetCapId - The capIDModel of the record to which funds are being transferred
+ * @return {number} transferAmt - The amount of funds transferred
+ */
+declare function transferReceiptAndApply(receiptCapId: CapIDModel, targetCapId: CapIDModel): number
+
+/**
+ * Updates the application status for a given capId
+ * @param {string} stat - The status to update the application to
+ * @param {string} cmt - The comment to add to the application status update
+ * @param {string} [capId] - The capId to update the application status for (optional)
+ * @returns {void}
+ */
+declare function updateAppStatus(stat: string, cmt: string, capId?: string): void
+/**
+ * Updates the enforcement officer name for a given CapId.
+ * @param {string} enfName - The name of the enforcement officer.
+ * @param {CapIDModel} [itemCap] - The CapId to update. Defaults to the current CapId.
+ * @returns {boolean} - True if the update was successful, false otherwise.
+ */
+declare function updateEnfOfficer(enfName: string, itemCap?: CapIDModel): boolean
+
+
+/**
+ * Updates an assessed fee with a new Qty.  If not found, adds it
+
+/**
+ * Updates the auto invoice flag of a fee item
+ * @param {number} feeSeq - The sequence number of the fee item
+ * @param {boolean} finvoice - The auto invoice flag
+ * @param {boolean} feeItem - The fee item object from the aa.finance API
+ * @returns {void}
+ */
+declare function updateFeeItemInvoiceFlag(feeSeq: number, finvoice: boolean): void
+
+
+/**
+ * Updates the guidesheet ASI field with a new value
+ * @param {number} inspId - The inspection ID
+ * @param {string} gName - The guidesheet name
+ * @param {string} gItem - The guidesheet item name
+ * @param {string} asiGroup - The ASI group code
+ * @param {string} asiSubGroup - The ASI subgroup code
+ * @param {string} asiLabel - The ASI label
+ * @param {string} newValue - The new value for the ASI
+ * @param {CapIDModel} [itemCap] - Optional capId
+ * @returns {boolean} - True if the update was successful, false otherwise
+ */
+declare function updateGuidesheetASIField(inspId: number, gName: string, gItem: string, asiGroup: string, asiSubGroup: string, asiLabel: string, newValue: string, itemCap?: CapIDModel): boolean
+
+
+/**
+ * Updates the guidesheet ID to nGuideSheetID if not currently populated
+ * @param {string} inspId - The ID of the inspection
+ * @param {string} gName - The name of the guidesheet
+ * @param {string} nGuideSheetID - The new guidesheet ID
+ * @param {CapIDModel} [itemCap] - The capId of the record (optional)
+ * @returns {boolean} - True if the guidesheet was successfully updated, false otherwise
+ */
+declare function updateGuidesheetID(inspId: string, gName: string, nGuideSheetID: string, itemCap?: CapIDModel): boolean
+
+/**
+ * Updates the plan review workflow or inspection based on the updateIndicator value
+ * @param {string} wfTask - The workflow task to update
+ * @param {string} status - The status to update the workflow task to
+ * @param {string} wfComments - The comments to update the workflow task with
+ * @param {string} updateIndicator - The indicator to determine if to update workflow or inspection (W = workflow, I = inspection)
+ * @returns {boolean} - Returns true if the workflow or inspection was updated, false otherwise
+ */
+declare function updatePlanReviewWorkflow(wfTask: string, status: string, wfComments: string, updateIndicator: string): boolean
+
+
+/**
+ * Updates the reference parcel number for the parcels associated with the given CapId.
+ * @param {CapIDModel} [capId] - The CapId to update the reference parcel number for. If not provided, the current CapId will be used.
+ * @returns {void}
+ */
+declare function updateRefParcelToCap(capId?: CapIDModel): void
+
+/**
+ * Updates the short notes of a record
+ * @param {string} newSN - The new short notes
+ * @param {CapIDModel} [itemCap] - The capId of the record to update. Defaults to the current capId.
+ */
+declare function updateShortNotes(newSN: string, itemCap?: CapIDModel): void
+
+/**
+ * Updates a workflow task with the given parameters
+ * @param {string} wfstr - The workflow task to update
+ * @param {string} wfstat - The status to update the workflow task to
+ * @param {string} wfcomment - The comment to add to the workflow task
+ * @param {string} wfnote - The note to add to the workflow task
+ * @param {string} [processName] - The name of the subprocess (optional)
+ * @param {CapIDModel} [capId] - The capId to use (optional)
+ * @returns {boolean} - True if the workflow task was updated, false otherwise
+ */
+declare function updateTask(wfstr: string, wfstat: string, wfcomment: string, wfnote: string, processName?: string, capId?: CapIDModel): boolean
+
+
+/**
+ * Updates the task assignment date for a given workflow task
+ * @param {string} wfstr - The workflow task to update
+ * @param {date} wfAssignDate - The new assignment date
+ * @param {string} [processName] - The subprocess name (optional)
+ * @returns {boolean} - True if successful, false otherwise
+ */
+declare function updateTaskAssignedDate(wfstr: string, wfAssignDate: Date, processName?: string): boolean
+
+/**
+ * Updates the task assignment department
+ * @param {string} wfstr - The task description
+ * @param {string} wfDepartment - The department to assign the task to
+ * @param {string} [processName] - The optional subprocess name
+ * @returns {boolean} - True if successful, false if not
+ */
+declare function updateTaskDepartment(wfstr: string, wfDepartment: string, processName?: string): boolean
+
+/**
+ * Updates the work description of a given CapId
+ * @param {string} newWorkDes - The new work description
+ * @param {CapIDModel} [itemCap] - The CapId to update the work description of. Defaults to the global capId if not provided.
+ * @returns {boolean} - True if the work description was successfully updated, false otherwise.
+ */
+declare function updateWorkDesc(newWorkDes: string, itemCap?: CapIDModel): boolean
+
+
+/**
+ * Constructs a user object
+ * @param {string} vUserId - User ID
+ * @return {boolean}
+ */
+declare function userObj($vUserId$: string): boolean
+
+/**
+ * Validates GIS objects on the cap
+ * @returns {boolean} true if the app has GIS objects that validate in GIS
+ */
+declare function validateGisObjects(): boolean
+
+
+/**
+ * Computes and checks a Verhoeff algorithm check digit
+ * @param {string} num - The number to compute the check digit for
+ * @returns {string|boolean} - The number with the check digit appended if computing, or a boolean if checking
+ */
+declare function verhoeff($num: string): string|boolean
+
+/**
+ * Gets the work description for a given capId
+ * @param {CapIDModel} pCapId - The capId to get the work description for
+ * @return {string} The work description
+ */
+declare function workDescGet(pCapId: CapIDModel): string
+
+
+/**
+ * Adds leading zeros to a number until it reaches the desired length
+ * @param {number} num - The number to be padded
+ * @param {number} count - The desired length of the number
+ * @returns {string} - The number with leading zeros
+ */
+declare function zeroPad(num: number, count: number): string
