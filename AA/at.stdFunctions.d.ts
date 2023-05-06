@@ -1197,33 +1197,289 @@ declare function docWrite(dstr: string, header?: boolean, indent?: number): void
  */
 declare function doesASIFieldExistOnRecord(asiFieldName: string, itemCap: CapIDModel)
 
-// E
-/**
- * Edits the name of an application.
- * @param {string} newname - The new name for the application.
- * @param {CapIDModel} [itemCap=capId] - The ID of the application to be edited. If none provided, defaults to the global capId.
- * @return {boolean} - True if the name was successfully edited, False otherwise.
- */
-declare function editAppName(newname: string, itemCap?: string): boolean;
 
 /**
- * Edits a specific app specific information field.
+ * Edits the application name of a record
+ * @param {string} newname - The new name of the application
+ * @param {CapIDModel} [itemCap] - Optional capId to edit the application name of
+ * @returns {boolean} - True if the application name was successfully edited, false otherwise
+ */
+declare function editAppName(newname: string, itemCap?: CapIDModel): boolean
+
+/**
+ * Edits an app specific field
+ * @param {string} itemName - The name of the app specific field
+ * @param {string} itemValue - The value of the app specific field
+ * @param {CapIDModel} [itemCap] - The capId of the record to update (optional)
+ * @returns {boolean} - True if the update was successful, false otherwise
+ */
+declare function editAppSpecific(itemName: string, itemValue: string, itemCap?: CapIDModel): boolean
+/**
+ * Edits an app specific field in the record
+ * @param {string} itemName - The name of the app specific field to edit
+ * @param {string} itemValue - The value to set the app specific field to
+ * @param {boolean} [useAppSpecificGroupName=false] - Whether or not to use the app specific group name when editing the field
+ * @returns {void}
+ */
+declare function editAppSpecific4ACA(itemName: string, itemValue: string, useAppSpecificGroupName?: boolean): void
+
+
+/**
+ * Updates the building count for a given Cap ID
+ * @param {number} numBuild - The number of buildings to set
+ * @param {CapIDModel} [itemCap] - Optional Cap ID to update. Defaults to the global capId
+ * @returns {boolean} - True if the update was successful, false otherwise
+ */
+declare function editBuildingCount(numBuild: number, itemCap?: CapIDModel): boolean
+
+
+/**
+
+ * Updates a condition with the pType and pDesc to pStatus and pStatusType, returns true if updates, false if not. Will not update if status is already pStatus && pStatusType. All parameters are required except for pType.
+
+ * @param {string | null} [pType] - The type of the condition. 
+ * @param {string} pDesc - The description of the condition.
+ * @param {string} pStatus - The status of the condition.
+ * @param {string} pStatusType - The status type of the condition.
+ * @returns {boolean} - Returns true if updates, false if not. 
+ */
+
+declare function editCapConditionStatus($pType$: string | null, $pDesc$: string, $pStatus$: string, $pStatusType$: string): boolean
+
+/**
+ * Updates the attribute of a contact on a record
+ * @param {number} contactSeq - The sequence number of the contact to update
+ * @param {string} pAttributeName - The name of the attribute to update
+ * @param {string} pNewAttributeValue - The new value of the attribute
+ * @param {CapIDModel} [itemCap] - The capId of the record to update (optional)
+ * @return {void}
+ */
+declare function editCapContactAttribute(contactSeq: number, pAttributeName: string, pNewAttributeValue: string, itemCap?: CapIDModel): void
+
+
+/**
+ * Updates the reported channel for a given CapId
+ * @param {string} channel - The channel to update
+ * @param {CapIDModel} [itemCap] - Optional CapId to update, defaults to current CapId
+ * @returns {boolean} - True if successful, false if not
+ */
+declare function editChannelReported(channel: string, itemCap?: CapIDModel): boolean
+
+/**
+ * Updates the Construction Type Code for a given record
+ * @param {string} constTypeCode - The Construction Type Code to be set
+ * @param {CapIDModel} [itemCap] - Optional CapId to be used instead of the global capId
+ * @returns {boolean} - True if the update was successful, false otherwise
+ */
+declare function editConstTypeCode(constTypeCode: string, itemCap?: CapIDModel): boolean
+/**
+ * Changes contact types from existingType to newType.
+ * @param {string} existingType - The existing contact type.
+ * @param {string} newType - The new contact type.
+ * @param {CapIDModel} [capID] - Optional parameter for the cap ID.
+ */
+declare function editContactType(existingType: string, newType: string, capID?: CapIDModel): void
+
+
+/**
+ * Edits the Created By field of a record
+ * @param {string} nCreatedBy - The name of the user to set as the Created By
+ * @param {CapIDModel} [itemCap] - Optional capId to edit. If not provided, the current capId will be used
+ * @returns {boolean} - True if successful, false if not
+ */
+declare function editCreatedBy(nCreatedBy: string, itemCap?: CapIDModel): boolean
+
+/**
+ * Updates the estimated job value in additional information
+ * @param {number} jobValue - The estimated job value to be set
+ * @param {CapIDModel} [itemCap] - The capId to update the estimated job value for (optional)
+ * @returns {boolean} - True if the estimated job value was successfully updated, false otherwise
+ */
+declare function editEstimatedJobValue(jobValue: number, itemCap?: CapIDModel): boolean
+
+/**
+ * Updates the first issued date of a record
+ * @param {Date} issuedDate - The new issued date
+ * @param {CapIDModel} [itemCap] - Optional CapId to update the first issued date of
+ * @returns {boolean} - True if the first issued date was successfully updated, false otherwise
+ */
+declare function editFirstIssuedDate(issuedDate: Date, itemCap?: CapIDModel): boolean
+
+
+/**
+ * Updates the house count of a given CapId.
+ * @param {number} numHouse - The number of houses to set.
+ * @param {CapIDModel} [itemCap] - The CapId to update. Defaults to the global capId.
+ * @returns {boolean} - True if the house count was successfully updated, false otherwise.
+ */
+declare function editHouseCount(numHouse: number, itemCap?: CapIDModel): boolean
+
+/**
+ * Updates the required flag of an inspection milestone
+ * @param {string} inspType - The type of inspection
+ * @param {boolean} reqFlag - The required flag of the inspection
+ * @param {CapIDModel} [itemCap] - The capId of the record (optional)
+ * @returns {boolean} - True if successful, false if not
+ */
+declare function editInspectionRequiredFlag(inspType: string, reqFlag: boolean, itemCap?: CapIDModel): boolean
+
+/**
+ * Edits an existing lookup value in a standard choice
+ * @param {string} stdChoice - The standard choice to edit
+ * @param {string} stdValue - The value to edit
+ * @param {string} stdDesc - The new description for the value
+ * @returns {boolean} - Returns false if the value does not exist and is added
+ */
+declare function editLookup(stdChoice: string, stdValue: string, stdDesc: string): boolean
+
+
+/**
+ * Updates the priority of a record.
+ * @param {string} priority - The priority to set the record to.
+ * @param {CapIDModel} [itemCap] - The CapId of the record to update. Defaults to the current record.
+ * @returns {boolean} - True if the priority was successfully updated, false otherwise.
+ */
+declare function editPriority(priority: string, itemCap?: CapIDModel): boolean
+
+/**
+ * Edits the value of an address attribute for a reference address.
  * 
- * @param {string} itemName - The name of the app specific information field.
- * @param {string} itemValue - The new value for the app specific information field.
- * @param {CapIDModel} [itemCap] - The ID of the record to update. (optional) If no capId provided, uses the global capId.
+ * @param {number} refAddressPK - The primary key of the reference address.
+ * @param {string} label - The label of the address attribute to be edited.
+ * @param {string} newValue - The new value for the address attribute.
+ * 
+ * @returns {boolean} - Returns true if the attribute was successfully edited, false otherwise.
+ */
+declare function editRefAddrAttr(refAddressPK: number, label: string, newValue: string): boolean
+
+
+/**
+ * Edits an attribute of a reference license professional
+ * @param {string} pLicNum - The license number of the reference license professional
+ * @param {string} pAttributeName - The name of the attribute to edit
+ * @param {string} pNewAttributeValue - The new value of the attribute
+ * @returns {boolean} - True if the attribute was successfully edited, false otherwise
+ */
+declare function editRefLicProfAttribute(pLicNum: string, pAttributeName: string, pNewAttributeValue: string): boolean
+
+
+/**
+* This function is intended to update reference parcel attributes and refresh the parcel information on the record. 
+* If no parcel number is provided, it will update all parcels that contain the attributeName with the supplied attributeValue
+*
+* Call Example:
+* 	editRefParcelAttribute("DELINQUENT TAXES","No","048072002")
+
+
+/**
+ * Updates the reported channel for a given capId
+ * @param {string} reportedChannel - The reported channel to update
+ * @param {CapIDModel} [itemCap] - Optional CapId to update the reported channel for
+ * @returns {boolean} - True if the reported channel was successfully updated, false otherwise
+ */
+declare function editReportedChannel(reportedChannel: string, itemCap?: CapIDModel): boolean
+
+
+/**
+ * Updates the first issued date of a record
+ * @param {Date} issuedDate The new first issued date
+ * @param {CapIDModel} [itemCap] Optional CapId to update the first issued date of. Defaults to the current CapId.
+ * @returns {boolean} True if the first issued date was successfully updated, false otherwise
+ */
+declare function editFirstIssuedDate(issuedDate: Date, itemCap?: CapIDModel): boolean
+
+
+/**
+ * Sets the visibility of a task and comment in ACA for a given workflow task
+ * @param {string} wfstr - The workflow task to be edited
+ * @param {boolean} visibleTask - Whether or not the task should be visible in ACA
+ * @param {boolean} visibleComment - Whether or not the comment should be visible in ACA
+ * @param {string} restrictRole - A string of five binary digits representing the roles that should have access to the task and comment
+ * @param {string} [processName] - The name of the subprocess (optional)
+ * @returns {boolean} - True if successful, false if not
+ */
+declare function editTaskACAVisibility(wfstr: string, visibleTask: boolean, visibleComment: boolean, restrictRole: string, processName?: string): boolean
+
+/**
+ * Edits the comment of a task in a workflow
+ * @param {string} wfstr - The workflow task to edit
+ * @param {string} wfcomment - The comment to set
+ * @param {string} [processName] - The name of the subprocess (optional)
+ * @returns {boolean} - True if successful, false if not
+ */
+declare function editTaskComment(wfstr: string, wfcomment: string, processName?: string): boolean
+
+/**
+ * Edits the due date of a workflow task
+ * @param {string} wfstr - The workflow task to be edited
+ * @param {string} wfdate - The new due date for the workflow task
+ * @param {string} [processName] - The name of the subprocess (optional)
+ * @returns {boolean} - True if successful, false if not
+ */
+declare function editTaskDueDate(wfstr: string, wfdate: string, processName?: string): boolean
+
+/**
+ * Updates a task specific info field for a given workflow task
+ * @param {string} wfName - The name of the workflow task
+ * @param {string} itemName - The name of the task specific info field
+ * @param {string} itemValue - The value to set the task specific info field to
+ * @param {CapIDModel} [itemCap] - Optional capId to use for the update (defaults to current capId)
+ * @returns {boolean} - True if the update was successful, false otherwise
+ */
+declare function editTaskSpecific(wfName: string, itemName: string, itemValue: string, itemCap?: CapIDModel): boolean
+
+/**
+ * Sends an email to the specified recipient.
+ * @param {string} pToEmail - The email address of the recipient.
+ * @param {string} pFromEmail - The email address of the sender.
+ * @param {string} pSubject - The subject of the email.
+ * @param {string} pText - The body of the email.
+ * @param {string} [env] - The environment the email is being sent in.
+ * @returns {boolean} - True if the email was sent successfully.
+ */
+declare function email(pToEmail: string, pFromEmail: string, pSubject: string, pText: string, env?: string): boolean
+
+
+/**
+ * Sends an email to the specified contact type
+ * @param {string} mSubj - The subject of the email
+ * @param {string} mText - The body of the email
+ * @param {string} [contactType=Applicant] - The contact type to send the email to
+ * @returns {void}
+ */
+declare function emailContact(mSubj: string, mText: string, contactType?: string): void
+/**
+ * Encodes a string into base64
+ * @param {string} input - The string to be encoded
+ * @returns {string} The encoded string in base64
+ */
+declare function encode64(input: string): string
+
+
+/**
+ * Stops execution of the current std choice
  * 
  * @returns {void}
  */
-declare function editAppSpecific(itemName: string, itemValue: string, itemCap?: string): void;
+declare function endBranch(): void
 
 /**
- * Edits the value of an app specific field for an ACA record.
- * 
- * @param {string} itemName - The name of the app specific field to edit.
- * @param {string} itemValue - The new value for the app specific field.
+ * Executes an ASI table as if it were script commands
+ * @param {any[]} tableArray - An array of objects containing the ASI table data
+ * @param {Date} [thisDate] - A Date object (optional)
+ * @param {Number} [thisTime] - A time value (optional)
  */
-declare function editAppSpecific4ACA(itemName: string, itemValue: string): void;
+declare function executeASITable(tableArray: any[]): void
+
+/**
+ * Checks if a value exists in an array
+ * @param {any} eVal - The value to check for
+ * @param {any[]} eArray - The array to check in
+ * @returns {boolean} - True if the value exists in the array, false otherwise
+ */
+declare function exists(eVal: any, eArray: any[]): boolean
+
+// F functions
 
 /**
 
