@@ -2845,7 +2845,7 @@ declare function resultInspection(inspType: string, inspStatus: string, resultDa
  * @param {String} [processName] - The name of the process (optional)
  * @returns {Boolean}
  */
-declare function resultWorkflowTask(wfstr: string, wfstat: string, wfcomment: string, wfnote: string, processName: string): boolean
+declare function resultWorkflowTask(wfstr: string, wfstat: string, wfcomment: string, wfnote: string, processName?: string): boolean
 
 
 /**
