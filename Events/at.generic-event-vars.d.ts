@@ -21,7 +21,7 @@ declare var currentUserGroupObj: UserGroupModel
 declare var parentCapId: boolean | CapIDModel
 declare var feeFactor: String
 declare var partialCap: boolean
-declare var AInfo: [{ [key: string]: any }]
+declare var AInfo: [{ [key: string]: string | undefined }]
 declare var capDetail: CapDetailScriptModel
 declare var balanceDue: number
 declare var feesInvoicedTotal: number

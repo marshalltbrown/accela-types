@@ -2837,13 +2837,6 @@ declare function resultInspection(inspType: string, inspStatus: string, resultDa
  */
 declare function resultWorkflowTask(wfstr: string, wfstat: string, wfcomment: string, wfnote: string, processName: string): boolean
 
-/**
- * Executes the scripts and standard choices associated with an event
- * @param {string} eventName - The name of the event
- * @param {string} [controlString] - Optional control string to execute standard choices
- * @throws {Error} If an error occurs
- */
-declare function runEvent(eventName: string, controlString?: string): void
 
 /**
  * Runs a report and emails it to the contact associated with the record.
@@ -2929,10 +2922,10 @@ declare function searchProject(pProjType: string, pSearchType: string): CapIDMod
  * @param {string} templateName - The name of the email template
  * @param {object} params - The parameters to be used in the email template
  * @param {object} capIDScriptModel - The cap ID script model
- * @param {string} [reportFile] - The report file (optional)
+ * @param {string[]} [reportFile] - An array of string filepaths to attach to the email. (optional)
  * @returns {boolean} - True if the email was sent successfully, false otherwise
  */
-declare function sendNotification(emailFrom: string, emailTo: string, emailCC: string, templateName: string, params: object, reportFile?: string): boolean
+declare function sendNotification(emailFrom: string, emailTo: string, emailCC: string, templateName: string, params: object, reportFile?: string[]): boolean
 
 /**
  * Sets the contact type flag for all contacts associated with the given itemCap.
@@ -3050,10 +3043,10 @@ declare function transferReceiptAndApply(receiptCapId: CapIDModel, targetCapId: 
  * Updates the application status for a given capId
  * @param {string} stat - The status to update the application to
  * @param {string} cmt - The comment to add to the application status update
- * @param {string} [capId] - The capId to update the application status for (optional)
+ * @param {CapIDModel} [capId] - The capId to update the application status for (optional)
  * @returns {void}
  */
-declare function updateAppStatus(stat: string, cmt: string, capId?: string): void
+declare function updateAppStatus(stat: string, cmt: string, capId?: CapIDModel): void
 /**
  * Updates the enforcement officer name for a given CapId.
  * @param {string} enfName - The name of the enforcement officer.

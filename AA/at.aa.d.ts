@@ -135,10 +135,10 @@ declare namespace aa {
 		/**
 		 * Return app specific info group according to Cap ID.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult.
 		 */
-		function getAppSpecificInfoGroupByCapID(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getAppSpecificInfoGroupByCapID(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Add a new app status group.
@@ -165,10 +165,10 @@ declare namespace aa {
 		/**
 		 * Return app status group according to group.
 		 * @param {string} appStatusGroupCode (string) - agency name
-		 * @param {QueryFormat} format (QueryFormat) - the format mask
+		 * @param {QueryFormat | null} format (QueryFormat) - the format mask
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getAppStatusGroupByGroup(appStatusGroupCode:string, format:QueryFormat): ScriptResult<any>
+		function getAppStatusGroupByGroup(appStatusGroupCode:string, format:QueryFormat | null): ScriptResult<any>
 
 	}
 	namespace addressCondition {
@@ -401,49 +401,49 @@ declare namespace aa {
 		/**
 		 * Fetch all of addresses.
 		 * @param {number} addressId (number) - (long) address Id
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult note use RefAddressModel,need to change to
 		 RefAddressScriptModel later
 		 */
-		function getAddressByAddressId(addressId:number, format:QueryFormat): ScriptResult<any>
+		function getAddressByAddressId(addressId:number, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Fetch all of addresses.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult note use RefAddressModel,need to change to
 		 RefAddressScriptModel later
 		 */
-		function getAddressByCapId(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getAddressByCapId(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Fetch all of addresses.
 		 * @param {string} streetName (string) - street name
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult note use RefAddressModel,need to change to
 		 RefAddressScriptModel later
 		 */
-		function getAddressByStreetName(streetName:string, format:QueryFormat): ScriptResult<any>
+		function getAddressByStreetName(streetName:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Fetch all of compact addresses.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult note use RefAddressModel,need to change to
 		 RefAddressScriptModel later
 		 */
-		function getCompactAddress(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getCompactAddress(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Fetch all of address according to search conditions.
 		 * @param {number} houseStart (number) - (long) 
 		 * @param {number} houseEnd (number) - (long) 
 		 * @param {string} streetName (string)
-		 * @param {QueryFormat} format (QueryFormat)
+		 * @param {QueryFormat | null} format (QueryFormat)
 		 * @returns (ScriptResult<any>) - ScriptResult note use RefAddressModel,need to change to
 		 RefAddressScriptModel later
 		 */
-		function getAddressByHouseRangeStreetName(houseStart:number, houseEnd:number, streetName:string, format:QueryFormat): ScriptResult<any>
+		function getAddressByHouseRangeStreetName(houseStart:number, houseEnd:number, streetName:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get primary address according to permit id.
@@ -463,11 +463,11 @@ declare namespace aa {
 
 		/**
 		 * Fetch all of cities.
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult note use RefAddressModel,need to change to
 		 RefAddressScriptModel later
 		 */
-		function getCityList(qf:QueryFormat): ScriptResult<any>
+		function getCityList(qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Add an new Address.
@@ -1036,10 +1036,10 @@ declare namespace aa {
 		 * @param {number} processID (number) - (long) process id
 		 * @param {number} stepNumber (number) - (int) step number
 		 * @param {string} checkboxGroup (string) - checkboxGroup
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCheckboxByCapIDAndGroup(capID:CapIDModel, processID:number, stepNumber:number, checkboxGroup:string, format:QueryFormat): ScriptResult<any>
+		function getCheckboxByCapIDAndGroup(capID:CapIDModel, processID:number, stepNumber:number, checkboxGroup:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Edit task and application specific info.
@@ -1398,10 +1398,10 @@ declare namespace aa {
 		 * Return AssetScriptModel collection.
 		 * @param {AssetMasterModel} assetMasterModel (AssetMasterModel) - AssetMasterModel
 		 * @param {any[]} attributeList (any[]) - Collection
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getAssetDataList(assetMasterModel:AssetMasterModel, attributeList:any[], qf:QueryFormat): ScriptResult<any>
+		function getAssetDataList(assetMasterModel:AssetMasterModel, attributeList:any[], qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Add an new work order asset.
@@ -1420,18 +1420,18 @@ declare namespace aa {
 		/**
 		 * Get work order list by asset pk.
 		 * @param {AssetMasterPK} assetPK (AssetMasterPK) - AssetMasterPK
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getWorkOrderListByAsset(assetPK:AssetMasterPK, qf:QueryFormat): ScriptResult<any>
+		function getWorkOrderListByAsset(assetPK:AssetMasterPK, qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get Asset list by work order id.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getAssetListByWorkOrder(capID:CapIDModel, qf:QueryFormat): ScriptResult<any>
+		function getAssetListByWorkOrder(capID:CapIDModel, qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Clone Assets from source cap to target cap.
@@ -1604,10 +1604,10 @@ declare namespace aa {
 		/**
 		 * Retrieve data based on the BSTRUCTURE.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getStructures(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getStructures(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Add a structure to a permit in BSTRUCTURE table.
@@ -1646,10 +1646,10 @@ declare namespace aa {
 		 * Get an attribute by structureROC.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @param {StructureModel} structureROC (StructureModel) - StructureModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getAttributes(capID:CapIDModel, structureROC:StructureModel, format:QueryFormat): ScriptResult<any>
+		function getAttributes(capID:CapIDModel, structureROC:StructureModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Add an attribute to a structure in BSTRUCTURE_ATTRIBUTE.
@@ -1719,29 +1719,29 @@ declare namespace aa {
 		/**
 		 * Retrieve all permits associated with a given structure .
 		 * @param {StructureModel} structureROC (StructureModel) - StructureModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapIDByStructure(structureROC:StructureModel, format:QueryFormat): ScriptResult<any>
+		function getCapIDByStructure(structureROC:StructureModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Retrieve all permits associated with a given structure which have the
  given component group.
 		 * @param {string} componentGroup (string) - component hroup
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapIDByComponentGroup(componentGroup:string, format:QueryFormat): ScriptResult<any>
+		function getCapIDByComponentGroup(componentGroup:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Retrieve all permits associated with a given structure which have the
  given component type.
 		 * @param {string} componentGroup (string) - component group
 		 * @param {string} componentType (string) - component type
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapIDByComponentType(componentGroup:string, componentType:string, format:QueryFormat): ScriptResult<any>
+		function getCapIDByComponentType(componentGroup:string, componentType:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Add a structure to a permit in BSTRUCTURE table by individual parameters
@@ -1857,10 +1857,10 @@ declare namespace aa {
 		 * Get an attribute by structureROC.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @param {number} structureNumber (number) - (long) structure number
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getAttributes(capID:CapIDModel, structureNumber:number, format:QueryFormat): ScriptResult<any>
+		function getAttributes(capID:CapIDModel, structureNumber:number, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Retrieve data based on the parent StructureModel.
@@ -1881,10 +1881,10 @@ declare namespace aa {
 		/**
 		 * Retrieve all permits associated with a given structure .
 		 * @param {string} structureType (string) - structure type
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapIDByStructure(structureType:string, format:QueryFormat): ScriptResult<any>
+		function getCapIDByStructure(structureType:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Copy BStructure
@@ -2674,10 +2674,10 @@ declare namespace aa {
 
 		/**
 		 * Get the collection of cap types.
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapTypeList(qf:QueryFormat): ScriptResult<any>
+		function getCapTypeList(qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * @param {CapIDModel} capIDModel (CapIDModel)
@@ -2693,42 +2693,42 @@ declare namespace aa {
 
 		/**
 		 * Get the collection of project types.
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getProjectTypeList(qf:QueryFormat): ScriptResult<any>
+		function getProjectTypeList(qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get the collection of cap types in the module.
 		 * @param {string} moduleName (string) - module name
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapTypeListByModule(moduleName:string, qf:QueryFormat): ScriptResult<any>
+		function getCapTypeListByModule(moduleName:string, qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get the collection of cap types by group code.
 		 * @param {string} groupCode (string) - group code
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapTypeList(groupCode:string, qf:QueryFormat): ScriptResult<any>
+		function getCapTypeList(groupCode:string, qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * ******** capServer **********.
 		 * @param {CapIDModel} capID (CapIDModel) - the cap id
-		 * @param {QueryFormat} qf (QueryFormat) - the qf
+		 * @param {QueryFormat | null} qf (QueryFormat) - the qf
 		 * @returns (ScriptResult<any>) - the cap list
 		 */
-		function getCapList(capID:CapIDModel, qf:QueryFormat): ScriptResult<any>
+		function getCapList(capID:CapIDModel, qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Return CapIDScriptModel Colelction
 		 * @param {string} group (string) - app group
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapIDByInspGroup(group:string, qf:QueryFormat): ScriptResult<any>
+		function getCapIDByInspGroup(group:string, qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Return CapIDScriptModel Colelction
@@ -2737,18 +2737,18 @@ declare namespace aa {
 		 * @param {string} streetSuffix (string) - street suffix
 		 * @param {string} postalCode (string) - postal code
 		 * @param {string} streetDirection (string) - street direction
-		 * @param {QueryFormat} queryFormat (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} queryFormat (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapListByDetailAddress(streetName:string, houseNumber:number, streetSuffix:string, postalCode:string, streetDirection:string, queryFormat:QueryFormat): ScriptResult<any>
+		function getCapListByDetailAddress(streetName:string, houseNumber:number, streetSuffix:string, postalCode:string, streetDirection:string, queryFormat:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Return CapIDScriptModel Colelction
 		 * @param {string} parcelKey (string) - parcel key
-		 * @param {QueryFormat} queryFormat (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} queryFormat (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapListByParcelID(parcelKey:string, queryFormat:QueryFormat): ScriptResult<any>
+		function getCapListByParcelID(parcelKey:string, queryFormat:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get function content by primary key.
@@ -2764,11 +2764,11 @@ declare namespace aa {
 		 * @param {string} parcelNumber (string) - parcel number
 		 * @param {ScriptDateTime} perFileDDFrom (ScriptDateTime) - ScriptDateTime
 		 * @param {ScriptDateTime} perFileDDTo (ScriptDateTime) - ScriptDateTime
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @param {GISObjects} gISObject (GISObjects) - GISObject
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapListByCollection(capModel:CapModel, addr:AddressModel, parcelNumber:string, perFileDDFrom:ScriptDateTime, perFileDDTo:ScriptDateTime, qf:QueryFormat, gISObject:GISObjects): ScriptResult<any>
+		function getCapListByCollection(capModel:CapModel, addr:AddressModel, parcelNumber:string, perFileDDFrom:ScriptDateTime, perFileDDTo:ScriptDateTime, qf:QueryFormat | null, gISObject:GISObjects): ScriptResult<any>
 
 		/**
 		 * Return Cap ScriptModel Colelction.
@@ -2777,11 +2777,11 @@ declare namespace aa {
 		 * @param {string} parcelNumber (string) - parcel number
 		 * @param {ScriptDateTime} perFileDDFrom (ScriptDateTime) - ScriptDateTime
 		 * @param {ScriptDateTime} perFileDDTo (ScriptDateTime) - ScriptDateTime
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @param {GISObjectModel[]} gISObjects (GISObjectModel[]) - GISObjectModel Array
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCapListByCollection(capModel:CapModel, addr:AddressModel, parcelNumber:string, perFileDDFrom:ScriptDateTime, perFileDDTo:ScriptDateTime, qf:QueryFormat, gISObjects:GISObjectModel[]): ScriptResult<any>
+		function getCapListByCollection(capModel:CapModel, addr:AddressModel, parcelNumber:string, perFileDDFrom:ScriptDateTime, perFileDDTo:ScriptDateTime, qf:QueryFormat | null, gISObjects:GISObjectModel[]): ScriptResult<any>
 
 		/**
 		 * Create CAP ID script model according to given parameters.
@@ -2820,10 +2820,10 @@ declare namespace aa {
 		 * Get CAEConditions.
 		 * @param {number} licenseSeqNo (number) - (long) license sequence number
 		 * @param {string} conditionType (string) - condition type
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCAEConditions(licenseSeqNo:number, conditionType:string, format:QueryFormat): ScriptResult<any>
+		function getCAEConditions(licenseSeqNo:number, conditionType:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get comment by primary key.
@@ -2863,10 +2863,10 @@ declare namespace aa {
 
 		/**
 		 * Get standard comment.
-		 * @param {QueryFormat} queryFormat (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} queryFormat (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getStandardComment(queryFormat:QueryFormat): ScriptResult<any>
+		function getStandardComment(queryFormat:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Remove comment by activity.
@@ -2971,10 +2971,10 @@ declare namespace aa {
 		 * Get the status history of a CAP.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @param {string} type (string) - The type
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getStatusHistoryByCap(capID:CapIDModel, type:string, format:QueryFormat): ScriptResult<StatusHistoryScriptModel[]>
+		function getStatusHistoryByCap(capID:CapIDModel, type:string, format:QueryFormat | null): ScriptResult<StatusHistoryScriptModel[]>
 
 		/**
 		 * Link an application to a parent application.
@@ -5561,18 +5561,18 @@ declare namespace aa {
 		/**
 		 * Get fee audit list.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getFeeAuditList(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getFeeAuditList(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get fee audit list.
 		 * @param {number} batchNbr (number) - (long) the batch number
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getFeeAuditList(batchNbr:number, format:QueryFormat): ScriptResult<any>
+		function getFeeAuditList(batchNbr:number, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get fee schedule list
@@ -5585,10 +5585,10 @@ declare namespace aa {
 		 * Get fee item list.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @param {string} feeSchedule (string) - fee schedule
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getFeeItemList(capID:CapIDModel, feeSchedule:string, format:QueryFormat): ScriptResult<any>
+		function getFeeItemList(capID:CapIDModel, feeSchedule:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get fee item list.
@@ -5596,10 +5596,10 @@ declare namespace aa {
 		 * @param {string} feeSchedule (string) - fee schedule
 		 * @param {string} version (string) - fee version
 		 * @param {string} auditStatus (string)
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getFeeItemList(capID:CapIDModel, feeSchedule:string, version:string, auditStatus:string, format:QueryFormat): ScriptResult<any>
+		function getFeeItemList(capID:CapIDModel, feeSchedule:string, version:string, auditStatus:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get fee schedule by capID.
@@ -5641,10 +5641,10 @@ declare namespace aa {
 		/**
 		 * Get payment fee items.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getPaymentFeeItems(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getPaymentFeeItems(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Make payment.
@@ -5867,44 +5867,44 @@ declare namespace aa {
 		/**
 		 * Get receipt by capID.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getReceiptByCapID(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getReceiptByCapID(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get payment by capID
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getPaymentByCapID(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getPaymentByCapID(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get payment by payment date range
 		 * @param {Date} dateFrom (Date) - Date
 		 * @param {Date} dateTo (Date) - Date
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getOnLinePaymentByDate(dateFrom:Date, dateTo:Date, format:QueryFormat): ScriptResult<any>
+		function getOnLinePaymentByDate(dateFrom:Date, dateTo:Date, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get the payments in a special payment date ranger.
 		 * @param {Date} dateFrom (Date)
 		 * @param {Date} dateTo (Date)
-		 * @param {QueryFormat} format (QueryFormat)
+		 * @param {QueryFormat | null} format (QueryFormat)
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getPaymentByDate(dateFrom:Date, dateTo:Date, format:QueryFormat): ScriptResult<any>
+		function getPaymentByDate(dateFrom:Date, dateTo:Date, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * @param {Date} dateFrom (Date)
 		 * @param {Date} dateTo (Date)
-		 * @param {QueryFormat} format (QueryFormat)
+		 * @param {QueryFormat | null} format (QueryFormat)
 		 * @returns (ScriptResult<any>)          *
 		 */
-		function getReceiptsByDate(dateFrom:Date, dateTo:Date, format:QueryFormat): ScriptResult<any>
+		function getReceiptsByDate(dateFrom:Date, dateTo:Date, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get payment by batch number.
@@ -5917,10 +5917,10 @@ declare namespace aa {
 		 * Get payment by receiptNo.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @param {number} receiptNbr (number) - (long) receipt number
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getPaymentByReceiptNo(capID:CapIDModel, receiptNbr:number, format:QueryFormat): ScriptResult<any>
+		function getPaymentByReceiptNo(capID:CapIDModel, receiptNbr:number, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get total of set paid.
@@ -6010,10 +6010,10 @@ declare namespace aa {
 		/**
 		 * Get set payments by receipt number.
 		 * @param {number} receiptNbr (number) - (long) receipt number
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getSetPaymentsByReceiptNbr(receiptNbr:number, format:QueryFormat): ScriptResult<any>
+		function getSetPaymentsByReceiptNbr(receiptNbr:number, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get total of set application.
@@ -6325,26 +6325,26 @@ declare namespace aa {
 		/**
 		 * Get cashier audit.
 		 * @param {number} accAudSeqNbr (number) - (long) accAud sequence number
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCashierAudit(accAudSeqNbr:number, format:QueryFormat): ScriptResult<any>
+		function getCashierAudit(accAudSeqNbr:number, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get cashier audit list by capId.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCashierAuditListByCapId(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getCashierAuditListByCapId(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get cashier audit list by TranSeqNbr.
 		 * @param {number} tranSeqNbr (number) - (long) tran sequence number
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCashierAuditListByTranSeqNbr(tranSeqNbr:number, format:QueryFormat): ScriptResult<any>
+		function getCashierAuditListByTranSeqNbr(tranSeqNbr:number, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get TranBatchNbr.
@@ -6355,18 +6355,18 @@ declare namespace aa {
 		/**
 		 * Get contractor supplied valuation.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getContractorSuppliedValuation(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getContractorSuppliedValuation(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get calculated valuation.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getCalculatedValuation(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getCalculatedValuation(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get calculated valuation.
@@ -6423,10 +6423,10 @@ declare namespace aa {
 		 * Get BValuatn by period.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @param {string} valuationPeriod (string) - valuation period
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getBValuatnByPeriod(capID:CapIDModel, valuationPeriod:string, format:QueryFormat): ScriptResult<any>
+		function getBValuatnByPeriod(capID:CapIDModel, valuationPeriod:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Edit BValuatn flag.
@@ -6497,10 +6497,10 @@ declare namespace aa {
 		 * Close invoice.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @param {F4InvoiceModel} f4InvoiceROC (F4InvoiceModel) - f4InvoiceROC
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function closeInvoice(capID:CapIDModel, f4InvoiceROC:F4InvoiceModel, format:QueryFormat): ScriptResult<any>
+		function closeInvoice(capID:CapIDModel, f4InvoiceROC:F4InvoiceModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Close invoice.
@@ -6523,10 +6523,10 @@ declare namespace aa {
 		 * @param {number} printInvNbr (number) - (long) print invoice number
 		 * @param {ScriptDateTime} auditDate (ScriptDateTime) - the audit date
 		 * @param {string} auditStatus (string) - the audit status
-		 * @param {QueryFormat} format (QueryFormat)
+		 * @param {QueryFormat | null} format (QueryFormat)
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function closeInvoice(capID:CapIDModel, invNbr:number, invLevel:number, invStatus:string, invStatusDate:ScriptDateTime, balanceDue:number, invAmount:number, invDate:ScriptDateTime, invDueDate:ScriptDateTime, invComment:string, invBatchNbr:number, invBatchDate:ScriptDateTime, udf1:string, udf2:string, udf3:string, udf4:string, printInvNbr:number, auditDate:ScriptDateTime, auditStatus:string, format:QueryFormat): ScriptResult<any>
+		function closeInvoice(capID:CapIDModel, invNbr:number, invLevel:number, invStatus:string, invStatusDate:ScriptDateTime, balanceDue:number, invAmount:number, invDate:ScriptDateTime, invDueDate:ScriptDateTime, invComment:string, invBatchNbr:number, invBatchDate:ScriptDateTime, udf1:string, udf2:string, udf3:string, udf4:string, printInvNbr:number, auditDate:ScriptDateTime, auditStatus:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Add invoice.
@@ -6591,27 +6591,27 @@ declare namespace aa {
 		/**
 		 * Get invoice list.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getFeeItemInvoiceList(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getFeeItemInvoiceList(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get invoice by InvoiceNbr.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @param {number} invoiceNbr (number) - (long) invoice number
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getFeeItemInvoiceByInvoiceNbr(capID:CapIDModel, invoiceNbr:number, format:QueryFormat): ScriptResult<any>
+		function getFeeItemInvoiceByInvoiceNbr(capID:CapIDModel, invoiceNbr:number, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get invoice by capid.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getInvoiceByCapID(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getInvoiceByCapID(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Edit invoice BalanceDue.
@@ -6656,19 +6656,19 @@ declare namespace aa {
 		/**
 		 * Get invoice fee item by set id.
 		 * @param {string} setID (string) - the string of set id
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getFeeItemInvoiceBySetID(setID:string, format:QueryFormat): ScriptResult<any>
+		function getFeeItemInvoiceBySetID(setID:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get invoice fee item by fee number
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @param {number} feeNbr (number) - (long) fee number
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getFeeItemInvoiceByFeeNbr(capID:CapIDModel, feeNbr:number, format:QueryFormat): ScriptResult<any>
+		function getFeeItemInvoiceByFeeNbr(capID:CapIDModel, feeNbr:number, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get invoice fee item by set id.
@@ -6676,10 +6676,10 @@ declare namespace aa {
 		 * @param {string} paymentPeriod (string) - payment period
 		 * @param {string} feeCode (string) - fee code
 		 * @param {string} feeDes (string) - feedes
-		 * @param {QueryFormat} format (QueryFormat)
+		 * @param {QueryFormat | null} format (QueryFormat)
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getInvoiceFeeItemBySetID(setID:string, paymentPeriod:string, feeCode:string, feeDes:string, format:QueryFormat): ScriptResult<any>
+		function getInvoiceFeeItemBySetID(setID:string, paymentPeriod:string, feeCode:string, feeDes:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get set invoice.
@@ -6691,10 +6691,10 @@ declare namespace aa {
 		/**
 		 * Get valid fee itme invoice.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getFeeItemInvoiceByCapID(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getFeeItemInvoiceByCapID(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get valid fee itme invoice.
@@ -6786,10 +6786,10 @@ declare namespace aa {
 		/**
 		 * Get online payment transaction.
 		 * @param {TransactionModel} transactionModel (TransactionModel)
-		 * @param {QueryFormat} qf (QueryFormat)
+		 * @param {QueryFormat | null} qf (QueryFormat)
 		 * @returns (ScriptResult<any>)          *
 		 */
-		function getETransaction(transactionModel:TransactionModel, qf:QueryFormat): ScriptResult<any>
+		function getETransaction(transactionModel:TransactionModel, qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Make local payment for ACA, include under steps:
@@ -7048,11 +7048,11 @@ declare namespace aa {
 
 		/**
 		 * Retrieve structures from GSTRUCTURE table.
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @param {string} callerID (string) - the caller id
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getStructures(format:QueryFormat, callerID:string): ScriptResult<any>
+		function getStructures(format:QueryFormat | null, callerID:string): ScriptResult<any>
 
 		/**
 		 * Retrieve structures from GSTRUCTURE table.
@@ -9000,11 +9000,11 @@ declare namespace aa {
 		 * @param {any[]} parcelNumbers (any[]) - the ArrayList of parcel number
 		 * @param {Date} parcelRecordFromDate (Date) - the from date
 		 * @param {Date} parcelRecordToDate (Date) - the to date
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @param {GISObjects} gISObject (GISObjects) - GISObjects
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getParcelListByGisObject(capId:CapIDModel, capType:CapTypeModel, person:PersonModel, addr:AddressModel, parcelNumbers:any[], parcelRecordFromDate:Date, parcelRecordToDate:Date, qf:QueryFormat, gISObject:GISObjects): ScriptResult<any>
+		function getParcelListByGisObject(capId:CapIDModel, capType:CapTypeModel, person:PersonModel, addr:AddressModel, parcelNumbers:any[], parcelRecordFromDate:Date, parcelRecordToDate:Date, qf:QueryFormat | null, gISObject:GISObjects): ScriptResult<any>
 
 		/**
 		 * Get Parcel List by Collection.
@@ -9015,19 +9015,19 @@ declare namespace aa {
 		 * @param {any[]} parcelNumbers (any[]) - the ArrayList of parcel number
 		 * @param {Date} parcelRecordFromDate (Date) - the from date
 		 * @param {Date} parcelRecordToDate (Date) - the to date
-		 * @param {QueryFormat} qf (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} qf (QueryFormat) - QueryFormat
 		 * @param {GISObjectModel[]} gISObjects (GISObjectModel[])
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getParcelListByCollection(capId:CapIDModel, capType:CapTypeModel, person:PersonModel, addr:AddressModel, parcelNumbers:any[], parcelRecordFromDate:Date, parcelRecordToDate:Date, qf:QueryFormat, gISObjects:GISObjectModel[]): ScriptResult<any>
+		function getParcelListByCollection(capId:CapIDModel, capType:CapTypeModel, person:PersonModel, addr:AddressModel, parcelNumbers:any[], parcelRecordFromDate:Date, parcelRecordToDate:Date, qf:QueryFormat | null, gISObjects:GISObjectModel[]): ScriptResult<any>
 
 		/**
 		 * Get parcel by capID.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} queryFormat (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} queryFormat (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getParcelDailyByCapID(capID:CapIDModel, queryFormat:QueryFormat): ScriptResult<any>
+		function getParcelDailyByCapID(capID:CapIDModel, queryFormat:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get parcel and attributes.
@@ -9035,15 +9035,15 @@ declare namespace aa {
 		 * @param {QueryFormat | null} queryFormat (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<java.util.ArrayList>) - ScriptResult
 		 */
-		function getParcelandAttribute(capID:CapIDModel, queryFormat:QueryFormat | null): ScriptResult<java.util.ArrayList<ParcelModel>>
+		function getParcelandAttribute(capID:CapIDModel, queryFormat:QueryFormat | null | null): ScriptResult<java.util.ArrayList<ParcelModel>>
 		
 		/**
 		 * Get parcel and attributes by cap id.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} queryFormat (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} queryFormat (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getParcelByCapId(capID:CapIDModel, queryFormat:QueryFormat): ScriptResult<any>
+		function getParcelByCapId(capID:CapIDModel, queryFormat:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get ParcelList by ParcelInfoModel
@@ -9343,18 +9343,18 @@ declare namespace aa {
 
 		/**
 		 * Get contactType.
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult note use BizDomainModel, need change to
 		 BizDomainScriptModel later
 		 */
-		function getContactType(format:QueryFormat): ScriptResult<any>
+		function getContactType(format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get contactTypeAll.
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getContactTypeAll(format:QueryFormat): ScriptResult<any>
+		function getContactTypeAll(format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get peopleByOthers.
@@ -9367,10 +9367,10 @@ declare namespace aa {
 		 * @param {string} state (string) - state
 		 * @param {string} zip (string) - zip
 		 * @param {string} status (string) - status
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getPeopleByOthers(contactType:string, businessName:string, firstName:string, middleName:string, lastName:string, city:string, state:string, zip:string, status:string, format:QueryFormat): ScriptResult<any>
+		function getPeopleByOthers(contactType:string, businessName:string, firstName:string, middleName:string, lastName:string, city:string, state:string, zip:string, status:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get peopleByOthersForDaily.
@@ -9383,10 +9383,10 @@ declare namespace aa {
 		 * @param {string} state (string) - state
 		 * @param {string} zip (string) - zip
 		 * @param {string} status (string) - status
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getPeopleByOthersForDaily(contactType:string, businessName:string, firstName:string, middleName:string, lastName:string, city:string, state:string, zip:string, status:string, format:QueryFormat): ScriptResult<any>
+		function getPeopleByOthersForDaily(contactType:string, businessName:string, firstName:string, middleName:string, lastName:string, city:string, state:string, zip:string, status:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Add peopleAttribute.
@@ -9449,10 +9449,10 @@ declare namespace aa {
 		 * @param {PeopleModel} objPeopleModel (PeopleModel) - PeopleModel
 		 * @param {string} peopleType (string) - String
 		 * @param {string} recordStatus (string) - String
-		 * @param {QueryFormat} queryFormat (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} queryFormat (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getPeoplesByAttrs(objPeopleModel:PeopleModel, peopleType:string, recordStatus:string, queryFormat:QueryFormat): ScriptResult<any>
+		function getPeoplesByAttrs(objPeopleModel:PeopleModel, peopleType:string, recordStatus:string, queryFormat:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get peopleAttributeByPeople.
@@ -9464,11 +9464,11 @@ declare namespace aa {
 
 		/**
 		 * Get sysUserList.
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult note use SysUserModel,need to change to
 		 SysUserScriptModel later
 		 */
-		function getSysUserList(format:QueryFormat): ScriptResult<any>
+		function getSysUserList(format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get FIDList.
@@ -11459,17 +11459,17 @@ declare namespace aa {
 		/**
 		 * return all trust account collection of specific agency
 		 * @param {string} servProvCode (string)
-		 * @param {QueryFormat} qf (QueryFormat)
+		 * @param {QueryFormat | null} qf (QueryFormat)
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getTrustAccountList(servProvCode:string, qf:QueryFormat): ScriptResult<any>
+		function getTrustAccountList(servProvCode:string, qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * return all trust account collection of specific agency
-		 * @param {QueryFormat} qf (QueryFormat)
+		 * @param {QueryFormat | null} qf (QueryFormat)
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getTrustAccountList(qf:QueryFormat): ScriptResult<any>
+		function getTrustAccountList(qf:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * return all trust accounts that contain specific trust account status.
@@ -11674,19 +11674,19 @@ declare namespace aa {
 		 * return available trust account  collection by Set code
 		 * @param {string} servProvCode (string)
 		 * @param {string} setCode (string)
-		 * @param {QueryFormat} format (QueryFormat)
+		 * @param {QueryFormat | null} format (QueryFormat)
 		 * @param {string} callerID (string)
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getTrustAccountIDListBySetID(servProvCode:string, setCode:string, format:QueryFormat, callerID:string): ScriptResult<any>
+		function getTrustAccountIDListBySetID(servProvCode:string, setCode:string, format:QueryFormat | null, callerID:string): ScriptResult<any>
 
 		/**
 		 * return available trust account  collection by Set code
 		 * @param {string} setCode (string)
-		 * @param {QueryFormat} format (QueryFormat)
+		 * @param {QueryFormat | null} format (QueryFormat)
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getTrustAccountIDListBySetID(setCode:string, format:QueryFormat): ScriptResult<any>
+		function getTrustAccountIDListBySetID(setCode:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * return the total count of the people for the specific trust account
@@ -12271,19 +12271,19 @@ declare namespace aa {
 		/**
 		 * Retrieve all audit records from GPROCESS_HISTORY table.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getWorkflowHistory(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getWorkflowHistory(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Retrieve all audit records from GPROCESS_HISTORY table.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
 		 * @param {string} taskDescription (string) - task name
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getWorkflowHistory(capID:CapIDModel, taskDescription:string, format:QueryFormat): ScriptResult<any>
+		function getWorkflowHistory(capID:CapIDModel, taskDescription:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Check disposition privileges update current task info deactive task
@@ -12532,20 +12532,20 @@ declare namespace aa {
 		/**
 		 * Get task item by capID.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getTaskItemWorkflowByCapID(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getTaskItemWorkflowByCapID(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get task item by capId.
 		 * @param {string} Id1 (string) - permit id1
 		 * @param {string} Id2 (string) - permit id2
 		 * @param {string} Id3 (string) - permit id3
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult script result
 		 */
-		function getTaskItemByCapID(Id1:string, Id2:string, Id3:string, format:QueryFormat): ScriptResult<any>
+		function getTaskItemByCapID(Id1:string, Id2:string, Id3:string, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get workflow bean.
@@ -12558,10 +12558,10 @@ declare namespace aa {
 		/**
 		 * Get task itme by capid.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getTaskItemByCapID(capID:CapIDModel, format:QueryFormat): ScriptResult<any>
+		function getTaskItemByCapID(capID:CapIDModel, format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Adject task.
@@ -12603,10 +12603,10 @@ declare namespace aa {
 		/**
 		 * Get task status list.
 		 * @param {CapIDModel} capID (CapIDModel) - CapIDModel
-		 * @param {QueryFormat} Format (QueryFormat) - QueryFormat
+		 * @param {QueryFormat | null} Format (QueryFormat) - QueryFormat
 		 * @returns (ScriptResult<any>) - ScriptResult
 		 */
-		function getProcessRelationByCapID(capID:CapIDModel, Format:QueryFormat): ScriptResult<any>
+		function getProcessRelationByCapID(capID:CapIDModel, Format:QueryFormat | null): ScriptResult<any>
 
 		/**
 		 * Get task status list.
