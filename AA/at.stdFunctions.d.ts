@@ -2837,13 +2837,6 @@ declare function resultInspection(inspType: string, inspStatus: string, resultDa
  */
 declare function resultWorkflowTask(wfstr: string, wfstat: string, wfcomment: string, wfnote: string, processName: string): boolean
 
-/**
- * Executes the scripts and standard choices associated with an event
- * @param {string} eventName - The name of the event
- * @param {string} [controlString] - Optional control string to execute standard choices
- * @throws {Error} If an error occurs
- */
-declare function runEvent(eventName: string, controlString?: string): void
 
 /**
  * Runs a report and emails it to the contact associated with the record.
