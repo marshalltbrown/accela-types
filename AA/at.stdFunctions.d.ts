@@ -2932,10 +2932,10 @@ declare function searchProject(pProjType: string, pSearchType: string): CapIDMod
  * @param {string} templateName - The name of the email template
  * @param {object} params - The parameters to be used in the email template
  * @param {object} capIDScriptModel - The cap ID script model
- * @param {string[]} [reportFile] - An array of string filepaths to attach to the email. (optional)
+ * @param {any[]} [reportFile] - An array of string filepaths to attach to the email. (optional)
  * @returns {boolean} - True if the email was sent successfully, false otherwise
  */
-declare function sendNotification(emailFrom: string, emailTo: string, emailCC: string, templateName: string, params: object, reportFile?: string[]): boolean
+declare function sendNotification(emailFrom: string, emailTo: string, emailCC: string, templateName: string, params: object, reportFile?: any[]): boolean
 
 /**
  * Sets the contact type flag for all contacts associated with the given itemCap.
