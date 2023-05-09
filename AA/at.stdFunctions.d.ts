@@ -1181,6 +1181,16 @@ declare function doScriptActions(): void;
 declare function doStandardChoiceActions(stdChoiceEntry: string, doExecution: boolean, docIndent: number): void;
 
 /**
+ * Executes or documents the standard choice actions specified by the given entry.
+ *
+ * @param {string} stdChoiceEntry - The standard choice entry to be executed or documented.
+ * @param {boolean} doExecution - If true, execute the standard choice actions; if false, document the standard choice actions.
+ * @param {number} docIndent - The indentation level for documentation purposes.
+ */
+declare function doStandardChoiceActions2(stdChoiceEntry: string, doExecution: boolean, docIndent: number): void;
+
+
+/**
  * Writes a formatted string to the output with optional header and indentation.
  *
  * @param {string} dstr - The string to be written to the output.
