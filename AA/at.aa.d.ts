@@ -2,6 +2,13 @@
 /// <reference path="at.java.d.ts" />
 
 declare namespace aa {
+	
+	/**
+	 * Aborts the script. Commonly used in script testing.
+	 * @returns {void}
+	 */
+	function abortScript(): void
+
 	/**
 	 * Returns the Service Provider Code a.k.a. the agency name.
 	 */

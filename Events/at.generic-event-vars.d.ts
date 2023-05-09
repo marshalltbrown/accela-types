@@ -5,7 +5,6 @@ declare var bvr1: ScriptResult<BizDomainScriptModel>
 declare var doScripts: boolean
 declare var doStdChoices: boolean
 declare var controlFlagStdChoice: string
-declare var bzr: boolean
 declare var SAScript: null
 declare var SA: null
 declare var useSA: boolean

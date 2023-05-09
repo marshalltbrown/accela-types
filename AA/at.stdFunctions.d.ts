@@ -32,9 +32,9 @@ declare function activeTasksCheck(): boolean
 Adds a new row to an ASI table.
 @param {string} tableName - The name of the ASI table.
 @param {Array<{[key: string]: string | {fieldValue: string, readOnly: boolean}}>} tableValueArray - An array of associative arrays representing the values for the new row. Each element in the array must be either a string or an object with properties 'fieldValue' and 'readOnly'.
-@param {string} [capId] - (Optional) The ID of the record to add the ASI table to. If not provided, the function will use the global variable 'capId'.
+@param {CapIDModel} [capId] - (Optional) The ID of the record to add the ASI table to. If not provided, the function will use the global variable 'capId'.
 */
-declare function addASITable(tableName: string, tableValueArray: Array<{[key: string]: string | {fieldValue: string, readOnly: boolean}}>, capId?: string): void;
+declare function addASITable(tableName: string, tableValueArray: Array<{[key: string]: string | {fieldValue: string, readOnly: boolean}}>, capId?: CapIDModel): void;
 
 /**
 Adds a new ASI table to the specified page flow in ACA.
@@ -42,10 +42,10 @@ Adds a new ASI table to the specified page flow in ACA.
 @param {string} tableName - The name of the ASI table to add.
 @param {Array<{[key: string]: string | {fieldValue: string, readOnly: boolean}}>} tableValueArray - An array of associative arrays representing the values for the ASI table.
 Each element in the array should be either a string or an asiTableVal object (with properties "fieldValue" and "readOnly").
-@param {string} [capId] - The cap ID to add the ASI table to (optional, defaults to the current cap ID).
+@param {CapIDModel} [capId] - The cap ID to add the ASI table to (optional, defaults to the current cap ID).
 @returns {boolean} - Returns true if the ASI table was successfully added, false if it was not.
 */
-declare function addASITable4ACAPageFlow(destinationTableGroupModel: Object, tableName: string, tableValueArray: Array<{[key: string]: string | {fieldValue: string, readOnly: boolean}}>, capId?: string): boolean;
+declare function addASITable4ACAPageFlow(destinationTableGroupModel: Object, tableName: string, tableValueArray: Array<{[key: string]: string | {fieldValue: string, readOnly: boolean}}>, capId?: CapIDModel): boolean;
 
 /**
 *
@@ -296,11 +296,11 @@ declare function addParent(parentAppNum: string | CapIDModel): void;
 /**
 
 This function is used to add public user's licensed professionals to a record. This references the global capId environment variable.
-@param {string | null} itemCapId - Used for logging only.
+@param {CapIDModel} itemCapId - Used for logging only.
 @param {string} publicUser - The public user's username.
 @returns {void}
 */
-declare function addPublicUserLPsToRecord(itemCapId: string | null, publicUser: string): void;
+declare function addPublicUserLPsToRecord(itemCapId: CapIDModel, publicUser: string): void;
 
 /**
 
@@ -1181,6 +1181,16 @@ declare function doScriptActions(): void;
 declare function doStandardChoiceActions(stdChoiceEntry: string, doExecution: boolean, docIndent: number): void;
 
 /**
+ * Executes or documents the standard choice actions specified by the given entry.
+ *
+ * @param {string} stdChoiceEntry - The standard choice entry to be executed or documented.
+ * @param {boolean} doExecution - If true, execute the standard choice actions; if false, document the standard choice actions.
+ * @param {number} docIndent - The indentation level for documentation purposes.
+ */
+declare function doStandardChoiceActions2(stdChoiceEntry: string, doExecution: boolean, docIndent: number): void;
+
+
+/**
  * Writes a formatted string to the output with optional header and indentation.
  *
  * @param {string} dstr - The string to be written to the output.
@@ -1617,10 +1627,10 @@ declare function getACAUrl(itemCap?: CapIDModel): string
 /**
  * Retrieves the county of an address of a specified type
  * @param {string} aType - The type of address to retrieve the county of
- * @param {string} [capId] - Optional Cap ID to use for address retrieval
+ * @param {CapIDModel} [capId] - Optional Cap ID to use for address retrieval
  * @return {string} The county of the address, or false if not found
  */
-declare function getAddressCountyByAddressType(aType: string, capId?: string): string
+declare function getAddressCountyByAddressType(aType: string, capId?: CapIDModel): string
 
 
 /**
@@ -1730,23 +1740,23 @@ declare function getChildren(pCapType: string, pParentCapId?: CapIDModel, pChild
 
 /**
  * Returns an array of associative arrays with contact attributes.  Attributes are UPPER CASE
- * @param {string} [capid] - Optional capid
+ * @param {CapIDModel} [capid] - Optional capid
  * @returns {Array} - An array of associative arrays with contact attributes
  */
-declare function getContactArray(capid?: string): any[]
+declare function getContactArray(capid?: CapIDModel): any[]
 /**
  * Returns an array of associative arrays with contact attributes.  Attributes are UPPER CASE
- * @param {string} [capid] - Optional capid
+ * @param {CapIDModel} [capid] - Optional capid
  * @returns {Array.<Object>} - An array of associative arrays with contact attributes.
  */
-declare function getContactArrayBefore(capid?: string): Array<Object>
+declare function getContactArrayBefore(capid?: CapIDModel): Array<Object>
 /**
  * Retrieves a contact from a given capId based on contact type
  * @param {string} conType - The contact type to search for
- * @param {string} capId - The capId to search for the contact in
+ * @param {CapIDModel} capId - The capId to search for the contact in
  * @returns {object} - The contact object if found, false otherwise
  */
-declare function getContactByType(conType: string, capId: string): object
+declare function getContactByType(conType: string, capId: CapIDModel): object
 
 
 /**
