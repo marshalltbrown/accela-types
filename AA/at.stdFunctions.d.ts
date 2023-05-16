@@ -1636,10 +1636,10 @@ declare function getAddressCountyByAddressType(aType: string, capId?: CapIDModel
 /**
  * Retrieves the address line of a given address type for a given capId
  * @param {string} aType - The address type to retrieve
- * @param {string} [itemCap] - The capId to retrieve the address line from (optional)
+ * @param {CapIDModel} [itemCap] - The capId to retrieve the address line from (optional)
  * @returns {string|boolean} The address line or false if not found
  */
-declare function getAddressLineByAddressType(aType: string, itemCap?: string): string | boolean
+declare function getAddressLineByAddressType(aType: string, itemCap?: CapIDModel): string | boolean
 /**
  * Retrieves the conditions for a given capId and adds them to the params object
  * 
@@ -1725,10 +1725,10 @@ declare function getCapsWithConditionsRelatedByRefContact($itemCap$: CapIDModel,
 /**
  * Retrieves the child tasks of a given task name
  * @param {string} taskName - The name of the task to retrieve the child tasks of
- * @param {string} [itemCap] - Optional parameter for the cap ID to use (defaults to the global CapIDModel)
+ * @param {CapIDModel} [itemCap] - Optional parameter for the cap ID to use (defaults to the global CapIDModel)
  * @returns {any[]} - An array of child tasks
  */
-declare function getChildTasks(taskName: string, itemCap?: string): any[]
+declare function getChildTasks(taskName: string, itemCap?: CapIDModel): any[]
 /**
  * Retrieves an array of children capId objects whose cap type matches pCapType parameter
  * @param {string} pCapType - The cap type to search for. Wildcard * may be used, e.g. Building/Commercial/Permit/*
@@ -2281,10 +2281,10 @@ declare function include(s: string): void
  * @param {string} taskName - The name of the task to attach the subprocess to
  * @param {string} process - The name of the subprocess to attach
  * @param {boolean} completeReqd - Indicates if the task must be completed before the subprocess can be started
- * @param {string} [itemCap] - Optional capId to use instead of the global capId (global)
+ * @param {CapIDModel} [itemCap] - Optional capId to use instead of the global capId (global)
  * @returns {boolean} - True if the subprocess was successfully attached, false otherwise
  */
-declare function insertSubProcess(taskName: string, process: string, completeReqd: boolean, itemCap?: string): boolean
+declare function insertSubProcess(taskName: string, process: string, completeReqd: boolean, itemCap?: CapIDModel): boolean
 
 
 /**
@@ -2429,10 +2429,10 @@ declare function linkPublicUserToContact(contactType?: string): PublicUserModel
 /**
  * Loads an ASI Table from the specified Cap ID
  * @param {string} tname - The name of the ASI Table to load
- * @param {string} [itemCap] - Optional Cap ID to load from
+ * @param {CapIDModel} [itemCap] - Optional Cap ID to load from
  * @returns {any[]} - An array of objects containing the ASI Table values
  */
-declare function loadASITable(tname: string, itemCap?: string): any[]
+declare function loadASITable(tname: string, itemCap?: CapIDModel): any[]
 
 /**
  * Loads App Specific tables into their own array of arrays.  Creates global array objects
@@ -2476,18 +2476,18 @@ declare function loadAddressAttributes4ACA(thisArr: Object): void
 /**
  * Loads App Specific Info into an associative array
  * @param {Object} thisArr - Associative array to load App Specific Info into
- * @param {String} [itemCap] - Optional cap ID to load from
+ * @param {CapIDModel} [itemCap] - Optional cap ID to load from
  */
-declare function loadAppSpecific(thisArr: Object, itemCap?: String): void
+declare function loadAppSpecific(thisArr: Object, itemCap?: CapIDModel): void
 
 
 /**
  * Loads App Specific Info into an associative array
  * @param {Object} thisArr - Associative array to load App Specific Info into
- * @param {String} [itemCap] - Optional Cap ID to load from
+ * @param {CapIDModel} [itemCap] - Optional Cap ID to load from
  * @param {Boolean} [useAppSpecificGroupName] - Optional boolean to indicate whether to use the App Specific Group Name
  */
-declare function loadAppSpecific4ACA(thisArr: Object, itemCap?: String, useAppSpecificGroupName?: Boolean): void
+declare function loadAppSpecific4ACA(thisArr: Object, itemCap?: CapIDModel, useAppSpecificGroupName?: Boolean): void
 
 
 /**
@@ -2509,10 +2509,10 @@ declare function loadFees(capId?: CapIDModel): any[]
 /**
  * Loads the guide sheet items for a given inspection
  * @param {string} inspId - The ID of the inspection
- * @param {string} [itemCap] - Optional cap ID to load from
+ * @param {CapIDModel} [itemCap] - Optional cap ID to load from
  * @returns {Object} - An associative array of Guide Sheet Items
  */
-declare function loadGuideSheetItems(inspId: string, itemCap?: string): Object
+declare function loadGuideSheetItems(inspId: string, itemCap?: CapIDModel): Object
 
 /**
  * Loads parcel attributes into an associative array
@@ -2651,10 +2651,10 @@ declare function parcelConditionExists(condtype: string): boolean
 
 /**
  * Checks if a parcel exists on the current or specified cap
- * @param {string} [itemCap] - Optional cap ID to load from
+ * @param {CapIDModel} [itemCap] - Optional cap ID to load from
  * @returns {boolean} - True if parcel exists, false if not
  */
-declare function parcelExistsOnCap(itemCap?: string): boolean
+declare function parcelExistsOnCap(itemCap?: CapIDModel): boolean
 
 
 /**
@@ -2748,10 +2748,10 @@ declare function refLicProfGetDate(pLicNum: string, pDateType?: string): Date
 /**
  * Removes all rows from an ASI table
  * @param {string} tableName - The name of the ASI table
- * @param {string} [itemCap] - The capId to remove the ASI table from (optional)
+ * @param {CapIDModel} [itemCap] - The capId to remove the ASI table from (optional)
  * @returns {boolean} - True if the ASI table was successfully removed, false otherwise
  */
-declare function removeASITable(tableName: string, itemCap?: string): boolean
+declare function removeASITable(tableName: string, itemCap?: CapIDModel): boolean
 
 
 /**
@@ -2764,10 +2764,10 @@ declare function removeAllFees(itemCap: CapIDModel): void
  * Removes a condition from a CAP
  * @param {string} cType - The type of condition to remove
  * @param {string} cDesc - The description of the condition to remove
- * @param {string} [itemCap] - Optional CAP ID to remove the condition from. If not provided, the condition will be removed from the current CAP.
+ * @param {CapIDModel} [itemCap] - Optional CAP ID to remove the condition from. If not provided, the condition will be removed from the current CAP.
  * @returns {boolean} - True if the condition was successfully removed, false otherwise
  */
-declare function removeCapCondition(cType: string, cDesc: string, itemCap?: string): boolean
+declare function removeCapCondition(cType: string, cDesc: string, itemCap?: CapIDModel): boolean
 
 
 /**
