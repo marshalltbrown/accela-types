@@ -1053,13 +1053,12 @@ declare function createRefLicProfFromLicProf(): string | false;
 
 /**
  * Adds a specified number of days to a given date, with the option to consider working days only.
- * @param {string} td - The input date as a string in "mm/dd/yyyy" format or any string that converts to a JS date.
+ * @param {string | null} td - The input date as a string in "mm/dd/yyyy" format or any string that converts to a JS date.
  * @param {number} amt - The number of days to add, can be positive or negative.
  * @param {boolean} [useWorking] - Optional. If true, only working days are considered while performing the date arithmetic.
  * @returns {string} The resulting date as a string in "mm/dd/yyyy" format.
  */
-declare function dateAdd(td: string, amt: number, useWorking?: boolean): string;
-
+declare function dateAdd(td: string | null, amt: number, useWorking?: boolean): string;
 
 /**
  * Adds specified number of months to a given date and returns the new date as a string in the format MM/DD/YYYY.
