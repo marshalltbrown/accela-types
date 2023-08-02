@@ -1,6 +1,6 @@
 {
   "name": "accela-types",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Type declarations for the Accela API and scripting environment.",
   "repository": {
     "type": "git",
