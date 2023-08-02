@@ -1053,13 +1053,12 @@ declare function createRefLicProfFromLicProf(): string | false;
 
 /**
  * Adds a specified number of days to a given date, with the option to consider working days only.
- * @param {string} td - The input date as a string in "mm/dd/yyyy" format or any string that converts to a JS date.
+ * @param {string | null} td - The input date as a string in "mm/dd/yyyy" format or any string that converts to a JS date.
  * @param {number} amt - The number of days to add, can be positive or negative.
  * @param {boolean} [useWorking] - Optional. If true, only working days are considered while performing the date arithmetic.
  * @returns {string} The resulting date as a string in "mm/dd/yyyy" format.
  */
-declare function dateAdd(td: string, amt: number, useWorking?: boolean): string;
-
+declare function dateAdd(td: string | null, amt: number, useWorking?: boolean): string;
 
 /**
  * Adds specified number of months to a given date and returns the new date as a string in the format MM/DD/YYYY.
@@ -1636,10 +1635,10 @@ declare function getAddressCountyByAddressType(aType: string, capId?: CapIDModel
 /**
  * Retrieves the address line of a given address type for a given capId
  * @param {string} aType - The address type to retrieve
- * @param {string} [itemCap] - The capId to retrieve the address line from (optional)
+ * @param {CapIDModel} [itemCap] - The capId to retrieve the address line from (optional)
  * @returns {string|boolean} The address line or false if not found
  */
-declare function getAddressLineByAddressType(aType: string, itemCap?: string): string | boolean
+declare function getAddressLineByAddressType(aType: string, itemCap?: CapIDModel): string | boolean
 /**
  * Retrieves the conditions for a given capId and adds them to the params object
  * 
@@ -1725,10 +1724,10 @@ declare function getCapsWithConditionsRelatedByRefContact($itemCap$: CapIDModel,
 /**
  * Retrieves the child tasks of a given task name
  * @param {string} taskName - The name of the task to retrieve the child tasks of
- * @param {string} [itemCap] - Optional parameter for the cap ID to use (defaults to the global CapIDModel)
+ * @param {CapIDModel} [itemCap] - Optional parameter for the cap ID to use (defaults to the global CapIDModel)
  * @returns {any[]} - An array of child tasks
  */
-declare function getChildTasks(taskName: string, itemCap?: string): any[]
+declare function getChildTasks(taskName: string, itemCap?: CapIDModel): any[]
 /**
  * Retrieves an array of children capId objects whose cap type matches pCapType parameter
  * @param {string} pCapType - The cap type to search for. Wildcard * may be used, e.g. Building/Commercial/Permit/*
@@ -2281,10 +2280,10 @@ declare function include(s: string): void
  * @param {string} taskName - The name of the task to attach the subprocess to
  * @param {string} process - The name of the subprocess to attach
  * @param {boolean} completeReqd - Indicates if the task must be completed before the subprocess can be started
- * @param {string} [itemCap] - Optional capId to use instead of the global capId (global)
+ * @param {CapIDModel} [itemCap] - Optional capId to use instead of the global capId (global)
  * @returns {boolean} - True if the subprocess was successfully attached, false otherwise
  */
-declare function insertSubProcess(taskName: string, process: string, completeReqd: boolean, itemCap?: string): boolean
+declare function insertSubProcess(taskName: string, process: string, completeReqd: boolean, itemCap?: CapIDModel): boolean
 
 
 /**
@@ -2429,10 +2428,10 @@ declare function linkPublicUserToContact(contactType?: string): PublicUserModel
 /**
  * Loads an ASI Table from the specified Cap ID
  * @param {string} tname - The name of the ASI Table to load
- * @param {string} [itemCap] - Optional Cap ID to load from
+ * @param {CapIDModel} [itemCap] - Optional Cap ID to load from
  * @returns {any[]} - An array of objects containing the ASI Table values
  */
-declare function loadASITable(tname: string, itemCap?: string): any[]
+declare function loadASITable(tname: string, itemCap?: CapIDModel): any[]
 
 /**
  * Loads App Specific tables into their own array of arrays.  Creates global array objects
@@ -2476,18 +2475,18 @@ declare function loadAddressAttributes4ACA(thisArr: Object): void
 /**
  * Loads App Specific Info into an associative array
  * @param {Object} thisArr - Associative array to load App Specific Info into
- * @param {String} [itemCap] - Optional cap ID to load from
+ * @param {CapIDModel} [itemCap] - Optional cap ID to load from
  */
-declare function loadAppSpecific(thisArr: Object, itemCap?: String): void
+declare function loadAppSpecific(thisArr: Object, itemCap?: CapIDModel): void
 
 
 /**
  * Loads App Specific Info into an associative array
  * @param {Object} thisArr - Associative array to load App Specific Info into
- * @param {String} [itemCap] - Optional Cap ID to load from
+ * @param {CapIDModel} [itemCap] - Optional Cap ID to load from
  * @param {Boolean} [useAppSpecificGroupName] - Optional boolean to indicate whether to use the App Specific Group Name
  */
-declare function loadAppSpecific4ACA(thisArr: Object, itemCap?: String, useAppSpecificGroupName?: Boolean): void
+declare function loadAppSpecific4ACA(thisArr: Object, itemCap?: CapIDModel, useAppSpecificGroupName?: Boolean): void
 
 
 /**
@@ -2509,10 +2508,10 @@ declare function loadFees(capId?: CapIDModel): any[]
 /**
  * Loads the guide sheet items for a given inspection
  * @param {string} inspId - The ID of the inspection
- * @param {string} [itemCap] - Optional cap ID to load from
+ * @param {CapIDModel} [itemCap] - Optional cap ID to load from
  * @returns {Object} - An associative array of Guide Sheet Items
  */
-declare function loadGuideSheetItems(inspId: string, itemCap?: string): Object
+declare function loadGuideSheetItems(inspId: string, itemCap?: CapIDModel): Object
 
 /**
  * Loads parcel attributes into an associative array
@@ -2651,10 +2650,10 @@ declare function parcelConditionExists(condtype: string): boolean
 
 /**
  * Checks if a parcel exists on the current or specified cap
- * @param {string} [itemCap] - Optional cap ID to load from
+ * @param {CapIDModel} [itemCap] - Optional cap ID to load from
  * @returns {boolean} - True if parcel exists, false if not
  */
-declare function parcelExistsOnCap(itemCap?: string): boolean
+declare function parcelExistsOnCap(itemCap?: CapIDModel): boolean
 
 
 /**
@@ -2748,10 +2747,10 @@ declare function refLicProfGetDate(pLicNum: string, pDateType?: string): Date
 /**
  * Removes all rows from an ASI table
  * @param {string} tableName - The name of the ASI table
- * @param {string} [itemCap] - The capId to remove the ASI table from (optional)
+ * @param {CapIDModel} [itemCap] - The capId to remove the ASI table from (optional)
  * @returns {boolean} - True if the ASI table was successfully removed, false otherwise
  */
-declare function removeASITable(tableName: string, itemCap?: string): boolean
+declare function removeASITable(tableName: string, itemCap?: CapIDModel): boolean
 
 
 /**
@@ -2764,10 +2763,10 @@ declare function removeAllFees(itemCap: CapIDModel): void
  * Removes a condition from a CAP
  * @param {string} cType - The type of condition to remove
  * @param {string} cDesc - The description of the condition to remove
- * @param {string} [itemCap] - Optional CAP ID to remove the condition from. If not provided, the condition will be removed from the current CAP.
+ * @param {CapIDModel} [itemCap] - Optional CAP ID to remove the condition from. If not provided, the condition will be removed from the current CAP.
  * @returns {boolean} - True if the condition was successfully removed, false otherwise
  */
-declare function removeCapCondition(cType: string, cDesc: string, itemCap?: string): boolean
+declare function removeCapCondition(cType: string, cDesc: string, itemCap?: CapIDModel): boolean
 
 
 /**
@@ -2845,7 +2844,7 @@ declare function resultInspection(inspType: string, inspStatus: string, resultDa
  * @param {String} [processName] - The name of the process (optional)
  * @returns {Boolean}
  */
-declare function resultWorkflowTask(wfstr: string, wfstat: string, wfcomment: string, wfnote: string, processName: string): boolean
+declare function resultWorkflowTask(wfstr: string, wfstat: string, wfcomment: string, wfnote: string, processName?: string): boolean
 
 
 /**
@@ -2932,10 +2931,10 @@ declare function searchProject(pProjType: string, pSearchType: string): CapIDMod
  * @param {string} templateName - The name of the email template
  * @param {object} params - The parameters to be used in the email template
  * @param {object} capIDScriptModel - The cap ID script model
- * @param {string[]} [reportFile] - An array of string filepaths to attach to the email. (optional)
+ * @param {any[]} [reportFile] - An array of string filepaths to attach to the email. (optional)
  * @returns {boolean} - True if the email was sent successfully, false otherwise
  */
-declare function sendNotification(emailFrom: string, emailTo: string, emailCC: string, templateName: string, params: object, reportFile?: string[]): boolean
+declare function sendNotification(emailFrom: string, emailTo: string, emailCC: string, templateName: string, params: object, reportFile?: any[]): boolean
 
 /**
  * Sets the contact type flag for all contacts associated with the given itemCap.
@@ -3057,6 +3056,8 @@ declare function transferReceiptAndApply(receiptCapId: CapIDModel, targetCapId: 
  * @returns {void}
  */
 declare function updateAppStatus(stat: string, cmt: string, capId?: CapIDModel): void
+
+
 /**
  * Updates the enforcement officer name for a given CapId.
  * @param {string} enfName - The name of the enforcement officer.
@@ -3065,11 +3066,21 @@ declare function updateAppStatus(stat: string, cmt: string, capId?: CapIDModel):
  */
 declare function updateEnfOfficer(enfName: string, itemCap?: CapIDModel): boolean
 
+/**
+ * Updates an assessed fee with a new Qty.  If not found, adds it; else if invoiced fee found, adds another with adjusted qty.
+ * @param fcode The fee code to be updated/added
+ * @param fsched The Fee Schedule containing the specified fee code
+ * @param fperiod The configured fee pay period
+ * @param fqty The quantity to update the fee with
+ * @param finvoice "Y" or "N" - if "Y", invoices new fee item
+ * @param pDuplicate Optional param pDuplicate -if "N", won't add another if invoiced fee exists
+ * @param pFeeSeq Optional param pSeqNumber, Will attempt to update the specified Fee Sequence Number or Add new
+ */
+declare function updateFee(fcode: string, fsched: string, fperiod: string, fqty: number, finvoice: string, pDuplicate?: string, pFeeSeq?: string|number): number | null
+
 
 /**
  * Updates an assessed fee with a new Qty.  If not found, adds it
-
-/**
  * Updates the auto invoice flag of a fee item
  * @param {number} feeSeq - The sequence number of the fee item
  * @param {boolean} finvoice - The auto invoice flag
