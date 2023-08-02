@@ -3056,6 +3056,8 @@ declare function transferReceiptAndApply(receiptCapId: CapIDModel, targetCapId: 
  * @returns {void}
  */
 declare function updateAppStatus(stat: string, cmt: string, capId?: CapIDModel): void
+
+
 /**
  * Updates the enforcement officer name for a given CapId.
  * @param {string} enfName - The name of the enforcement officer.
@@ -3064,11 +3066,21 @@ declare function updateAppStatus(stat: string, cmt: string, capId?: CapIDModel):
  */
 declare function updateEnfOfficer(enfName: string, itemCap?: CapIDModel): boolean
 
+/**
+ * Updates an assessed fee with a new Qty.  If not found, adds it; else if invoiced fee found, adds another with adjusted qty.
+ * @param fcode The fee code to be updated/added
+ * @param fsched The Fee Schedule containing the specified fee code
+ * @param fperiod The configured fee pay period
+ * @param fqty The quantity to update the fee with
+ * @param finvoice "Y" or "N" - if "Y", invoices new fee item
+ * @param pDuplicate Optional param pDuplicate -if "N", won't add another if invoiced fee exists
+ * @param pFeeSeq Optional param pSeqNumber, Will attempt to update the specified Fee Sequence Number or Add new
+ */
+declare function updateFee(fcode: string, fsched: string, fperiod: string, fqty: number, finvoice: string, pDuplicate?: string, pFeeSeq?: string|number): number | null
+
 
 /**
  * Updates an assessed fee with a new Qty.  If not found, adds it
-
-/**
  * Updates the auto invoice flag of a fee item
  * @param {number} feeSeq - The sequence number of the fee item
  * @param {boolean} finvoice - The auto invoice flag
